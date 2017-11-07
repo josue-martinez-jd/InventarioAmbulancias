@@ -6727,8 +6727,17 @@ td.hidden-lg {
   display: table-cell !important;
 }
 
+/**
+    Added css 
+
+*/
+.jumbotron h1 {
+    text-align: center;
+    color: blue;
+}
+/***/
 @media (max-width: 767px) {
-  .hidden-lg.hidden-xs {
+    .hidden-lg.hidden-xs {
     display: none !important;
   }
   tr.hidden-lg.hidden-xs {

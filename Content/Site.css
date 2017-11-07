@@ -27,3 +27,25 @@ textarea {
         padding: 0;
     }
 }
+
+.jumbotron h2 {
+    text-align: center;
+    color: blue;
+}
+
+.col-md-4 {
+    height: 30px;
+    width: 105px;
+    font-size: 115%; 
+    color:blue; 
+}
+.col-md-4 p {
+    text-align:right; 
+}
+    .col-md-4 .textBoxes {
+    text-align:left;
+}
+
+
+
+
