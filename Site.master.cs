@@ -66,6 +66,7 @@ public partial class SiteMaster : MasterPage
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        //if (Usuarios.IsLogged ? false : pnlTopMenu.Visible = false); 
     }
 
     protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
