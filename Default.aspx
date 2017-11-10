@@ -50,32 +50,39 @@
     </asp:Panel>
    
     <br />
-    <div class="row" ID="datosPaciente">
+    <div class="row" >
         <h3 style="color:blue;text-align:center">DATOS DEL PACIENTE</h3>
     </div>
     <br />
-    <div class="row" >
-        <div class="col-md-2" style:"width:894px" >
+    <asp:Panel ID="InformacionPaciente" runat="server">
+        <asp:Panel ID="PacienteNombreTratamiento" runat="server">
+        <div class="row" >
+        <div class="col-md-2" >
          <p > &nbsp;Nombre Completo: </p>
         </div>
          <div class="col-md-2">
-             <asp:TextBox class="textBoxes" ID="txtNombrePaciente" runat="server" Width="950px" ></asp:TextBox>
+             <asp:TextBox class="textBoxes" ID="txtNombrePaciente" runat="server"  ></asp:TextBox>
          </div>
 
-        <div class="col-md-1" style:"width:894px" >
-         
-        </div>
-
-        <div class="col-md-2"  style:"width:950px">
+        <div class="col-md-2" style="margin-left: 2cm;" >
          <p> &nbsp;Tratamiento: </p>
         </div>
          <div class="col-md-2">
-             <asp:TextBox class="textBoxes" ID="txtTratamiento" runat="server" Width="950px"></asp:TextBox>
+             <asp:TextBox class="textBoxes" ID="txtTratamiento" runat="server" ></asp:TextBox>
          </div>
+
+         <div class="col-md-2" style="margin-left: 2cm;">
+             
+             <asp:Label runat="server" style="color:red" AssociatedControlID="chkNoTratamiento"> <asp:CheckBox ID="chkNoTratamiento" runat="server" /> Recordar Ambulancia?</asp:Label>
+             <%--<asp:Label runat="server" style="color:red"; AssociatedControlID="chkNoTratamiento"> &nbsp;No Tratamiento</asp:Label>--%>
+            <%--<asp:Label style="color:red"; AssociatedControlID="chkNoTratamiento" runat="server"> &nbsp;No Tratamiento</asp:Label>--%>
+        </div>
     </div>
+    </asp:Panel>
+    
 
     <asp:Panel ID="EdadSexoPaciente" runat="server">
-         <div class="row" style="margin-left: -1.99cm; padding-left: 1cm;">
+         <div class="row" >
         <div class="col-md-2"  >
             <p > &nbsp;Edad: </p>
         </div>
@@ -101,9 +108,20 @@
              <asp:TextBox class="textBoxes" ID="txtCedula" runat="server"  style="width: 150px; margin-left: -0.6cm;"></asp:TextBox>
         </div>
 
+        <div class="col-md-2" style="margin-left: 2.5cm;" >
+         <p> &nbsp;Alergias: </p>
+        </div>
+         <div class="col-md-2" style=" margin-left: 1.5cm;">
+             <asp:TextBox class="textBoxes" ID="txtAlergias" style="width: 300px;" runat="server" ></asp:TextBox>
+         </div>
+
+         <div class="col-md-2" style="    margin-left: 6.5cm; width: 200px;">
+            <q style="color:red";> <asp:CheckBox ID="chkAlergias" runat="server" />&nbsp;No Alergias</q>
+        </div>
+
     </div>
 
-        <div class="row" style="margin-left: -1.99cm; padding-left: 1cm;">
+        <div class="row" >
         <div class="col-md-2">
             <p > &nbsp;APP: </p>
         </div>
@@ -130,12 +148,29 @@
             <p > &nbsp;Otros: </p>
         </div>
 
-        <div class="col-md-2" >
-            <asp:TextBox class="textBoxes" ID="txtOtrosAPP" runat="server"  style="width: 150px; margin-left: -0.6cm;"></asp:TextBox>
+        <div class="col-md-2" style="width:500px;" >
+            <asp:TextBox class="textBoxes" ID="txtOtrosAPP" runat="server"  style="width: 500px; margin-left: 0.3cm;"></asp:TextBox>
         </div>
 
     </div>
+        </asp:Panel>
     </asp:Panel>
+
+    <br />
+    <asp:Panel ID=SignosExamenFisico runat="server">
+        <div class="row" >
+            <div class="col-md-4" >
+                <h3 >SIGNOS VITALES</h3>
+            </div>
+
+            <div class="col-md-4" >
+                <h3 >EXAMEN FISICO</h3>
+            </div>
+        </div>
+    </asp:Panel>
+   
+    
+    
 
     
    

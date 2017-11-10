@@ -49,10 +49,37 @@ textarea {
     width: 140px;
 }
 
+#MainContent_InformacionPaciente .col-md-2 {
+    margin-left: 0.6cm;
+    height: 30px;
+}
+
+#MainContent_InformacionPaciente .row {
+    margin-left: -1.99cm;
+    padding-left: 1cm;
+}
+
+
+#MainContent_PacienteNombreTratamiento .col-md-2 {
+    width: 200px;
+}
+
+#MainContent_PacienteNombreTratamiento .col-md-2 .textBoxes {
+    width: 200px;
+    margin-left: -1.2cm;
+    padding-left: 8cm;
+}
+
 #MainContent_EdadSexoPaciente  .col-md-2  {
     margin-left: 0.6cm;
     height: 30px;
     width: 47px;
+}
+
+#MainContent_SignosExamenFisico .col-md-4 {
+    width: 300px;
+    color: blue;
+    margin-left: 5cm;
 }
 
 
