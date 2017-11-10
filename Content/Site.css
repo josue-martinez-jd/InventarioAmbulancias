@@ -33,18 +33,28 @@ textarea {
     color: blue;
 }
 
-.col-md-4 {
+#MainContent_infoMedicos .col-md-2 {
     height: 30px;
-    width: 105px;
-    font-size: 115%; 
-    color:blue; 
+    width: 140px;
 }
-.col-md-4 p {
-    text-align:right; 
+.col-md-2 p {
+    text-align: right;
+    margin-left: 0.5cm;
+    font-size: 115%;
+    color: #0088de;
+    font-weight: bold;
 }
-    .col-md-4 .textBoxes {
-    text-align:left;
+
+#MainContent_infoMedicos .col-md-2 .textBoxes {
+    width: 140px;
 }
+
+#MainContent_EdadSexoPaciente  .col-md-2  {
+    margin-left: 0.6cm;
+    height: 30px;
+    width: 47px;
+}
+
 
 
 
