@@ -34,7 +34,7 @@
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <div class="checkbox">
-                                <asp:CheckBox runat="server" ID="chkRecordar" />
+                                <asp:CheckBox runat="server" ID="chkRecordar"  />
                                 <asp:Label runat="server" AssociatedControlID="chkRecordar">Recordar Ambulancia?</asp:Label>
                             </div>
                         </div>

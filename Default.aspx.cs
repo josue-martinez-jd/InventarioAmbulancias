@@ -11,4 +11,21 @@ public partial class _Default : Page
     {
 
     }
+
+    protected void chkICC_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void chkMujer_CheckedChanged(object sender, EventArgs e)
+    {
+        chkMujer.Checked = !chkHombre.Checked; 
+    }
+
+    protected void chkHombre_CheckedChanged(object sender, EventArgs e)
+    {
+        chkHombre.Checked = !chkMujer.Checked;
+    }
+
+    
 }
