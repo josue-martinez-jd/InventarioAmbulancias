@@ -37,11 +37,12 @@ textarea {
     height: 30px;
     width: 140px;
 }
-.col-md-2 p {
+
+p {
+    color: #0088de;
     text-align: right;
     margin-left: 0.5cm;
     font-size: 115%;
-    color: #0088de;
     font-weight: bold;
 }
 
@@ -76,10 +77,41 @@ textarea {
     width: 47px;
 }
 
-#MainContent_SignosExamenFisico .col-md-4 {
+h3.SignosVitales_ExamenFisico {
     width: 300px;
     color: blue;
-    margin-left: 5cm;
+    margin-left: 35%;
+}
+
+#MainContent_SignosVitales .row{
+   margin-left: 1.5%
+}
+
+.borders {
+    border: 1.2px solid blue;
+    border-radius: 15px;
+    padding: 1.2%;
+}
+
+#MainContent_SignosVitales .col-xs-2 {
+    text-align: center;
+    width: 30%;
+    color: #0088de;
+    font-size: 115%;
+    font-weight: bold;
+}
+
+#MainContent_SignosVitales .textBoxes {
+    max-width:90%; 
+}
+
+#MainContent_ExamenFisico h4{
+    color:blue; 
+    text-align:center; 
+}
+
+#MainContent_ExamenFisico .col-xs-2 {
+    width:50%
 }
 
 
