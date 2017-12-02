@@ -9,7 +9,7 @@ public partial class _Default : Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        txaHistoriaClinica.Value = "this test"; 
     }
 
     protected void chkICC_CheckedChanged(object sender, EventArgs e)

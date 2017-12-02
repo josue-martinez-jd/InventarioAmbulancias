@@ -37,9 +37,8 @@
          </div>
     </asp:Panel>
    
-    <div class="row" >
-        <h3 style="color:blue;text-align:center">DATOS DEL PACIENTE</h3>
-    </div>
+        <h3 >DATOS DEL PACIENTE</h3>
+
     <asp:Panel ID="InformacionPaciente" runat="server">
         <asp:Panel ID="PacienteNombreTratamiento" runat="server">
         <div class="row" >
@@ -150,7 +149,7 @@
     </asp:Panel>
 
     <br />
-
+    <div class="row">
     <div class="col-xs-6">
         <h3 class="SignosVitales_ExamenFisico" >Signos Vitales</h3>
            <asp:Panel ID="SignosVitales" class="borders" runat="server">
@@ -179,7 +178,7 @@
            <asp:Panel ID="HistoriaClinica" class="borders" runat="server">
               <div class="row" >
                   <div class="col-md-6">
-                      <textarea> </textarea>
+                      <textarea runat="server" ID="txaHistoriaClinica"> </textarea>
                   </div>
               </div>
            </asp:Panel>
@@ -317,12 +316,71 @@
         </asp:Panel>
        
     </div>
-         
+    </div>
     
-   
-    
-    
+    <br />
 
+        <h3>MEDICAMENTOS/EQUIPO UTILIZADOS</h3>
+    <asp:Panel ID="Medicamento_Equipo" runat="server">
+    <div class ="row text-style">
+        <div class="col-xs-6">
+            <h3 class="SignosVitales_ExamenFisico">Medicamentos</h3>
+            <asp:Panel ID="MedicamentosUtilizados" class="borders" runat="server">
+                <div class ="row">
+                    <div class="col-xs-7">
+                        Categoria:<asp:DropDownList ID="drpCategoriaMedicamento" class="dropdowns" runat="server"></asp:DropDownList>
+                    </div> 
+                     <div class="col-xs-7">
+                        Tipo:<asp:DropDownList ID="drpTipoMedicamento" class="dropdowns" runat="server"></asp:DropDownList>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="col-xs-2" style="width:40%;" >
+                         Nombre:<asp:DropDownList ID="drpNombreMedicamento" class="dropdowns" runat="server"></asp:DropDownList>
+                    </div>
+                    <div class="col-xs-2">
+                         Cantidad:<asp:TextBox ID="txtCantidadMedicamento" class="textBoxes" type="number" runat="server"></asp:TextBox>
+                    </div>
+                     <div class="col-xs-2">
+                         <asp:Button ID="btnAgregarMedicamento" class="buttons" Text="Agregar" runat="server"/>
+                    </div>
+                </div>
+            </asp:Panel>
+        </div>
+        <div class="col-xs-6">
+            <h3 class="SignosVitales_ExamenFisico">Equipos</h3>
+            <asp:Panel ID="EquipoUtilizado" class="borders" runat="server">
+                 <div class ="row">
+                    <div class="col-xs-7">
+                        Categoria:<asp:DropDownList ID="drpCategoriaEquipo" class="dropdowns" runat="server"></asp:DropDownList>
+                    </div> 
+                     <div class="col-xs-7">
+                        Tipo:<asp:DropDownList ID="drpTipoEquipo" class="dropdowns" runat="server"></asp:DropDownList>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="col-xs-2" style="width:40%;" >
+                         Nombre:<asp:DropDownList ID="drpNombreEquipo" class="dropdowns" runat="server"></asp:DropDownList>
+                    </div>
+                    <div class="col-xs-2">
+                         Cantidad:<asp:TextBox ID="txtCantidadEquipo" class="textBoxes" type="number" runat="server"></asp:TextBox>
+                    </div>
+                     <div class="col-xs-2">
+                         <asp:Button ID="btnAgregarEquipo" class="buttons" Text="Agregar" runat="server"/>
+                    </div>
+                </div> 
+            </asp:Panel>
+        </div>
+    </div>
+    </asp:Panel>
     
-   
+    <div class="row">
+        <div class="col-xs-6">
+            <asp:Button ID="btnGuardarBoleta" Text="Guardar Boleta" runat="server"/>
+        </div>
+        <div class="col-xs-6">
+            <asp:Button href="~/" ID="btnDescartarBoleta" Text="Descartar Boleta" runat="server"/>
+        </div>
+    </div>
+
 </asp:Content>

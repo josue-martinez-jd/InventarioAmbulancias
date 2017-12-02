@@ -50,8 +50,8 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Paciente Nuevo</a></li>
-                        <li><a runat="server" href="~/About">Actualizar Inventario</a></li>
+                        <li><a runat="server" href="~/">Nuevo Paciente</a></li>
+                        <li><a runat="server" href="~/Inventario">Inventario Actual</a></li>
                         <li><a runat="server" href="~/Contact">Revisar Historial</a></li>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
@@ -79,7 +79,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+                <a runat="server" href="~/">Inventario Ambulancias</a>
             </footer>
         </div>
     </form>
