@@ -16,35 +16,23 @@
         </table>
     </div>
     <asp:Panel runat="server" ID="infoMedicos">
-         <div class="row">
+         <div class="row text-style">
         <br />
-        <div class="col-md-2" >  
-         <p> Medico/TEM:  </p>
+        <div class="col-xs-4 " > 
+            Medico/TEM: <asp:TextBox class="textBoxes" ID="txtMedico" runat="server"  ></asp:TextBox>  
         </div>
-        <div class="col-md-2" >
-         <asp:TextBox class="textBoxes" ID="txtMedico" runat="server"  ></asp:TextBox>  
+       
+        <div class="col-xs-4" > 
+            Paramedico: <asp:TextBox class="textBoxes" ID="txtParamedico" runat="server"  ></asp:TextBox>  
         </div>
 
-        <div class="col-md-2">
-         <p> &nbsp;Paramedico: </p>
+        <div class="col-xs-4" > 
+            Unidad: <asp:TextBox class="textBoxes" ID="txtUnidad" runat="server"  ></asp:TextBox>  
         </div>
-         <div class="col-md-2">
-             <asp:TextBox class="textBoxes" ID="txtParamedico" runat="server" ></asp:TextBox>
-         </div>
 
-        <div class="col-md-2">
-         <p> &nbsp;Unidad: </p>
+        <div class="col-xs-4" > 
+            Base: <asp:TextBox class="textBoxes" ID="txtBase" runat="server"  ></asp:TextBox>  
         </div>
-         <div class="col-md-2">
-             <asp:TextBox class="textBoxes" ID="txtUnidad" runat="server"  ></asp:TextBox>
-         </div>
-
-        <div class="col-md-2">
-         <p> &nbsp;Base: </p>
-        </div>
-         <div class="col-md-2">
-             <asp:TextBox class="textBoxes" ID="txtBase" runat="server" ></asp:TextBox>
-         </div>
 
          </div>
     </asp:Panel>
@@ -187,40 +175,147 @@
                 </div>
         </div>
                </asp:Panel>
+        <h3 class="SignosVitales_ExamenFisico" >Historia Clinica</h3>
+           <asp:Panel ID="HistoriaClinica" class="borders" runat="server">
+              <div class="row" >
+                  <div class="col-md-6">
+                      <textarea> </textarea>
+                  </div>
+              </div>
+           </asp:Panel>
     </div>
 
     <div class="col-xs-6" >
         <h3 class="SignosVitales_ExamenFisico" >Examen Fisico</h3>
         <asp:Panel ID="ExamenFisico" class="borders" runat="server">
             <h4>Sistema Neurologico</h4>
+        <div class="row">
+                <div class="col-xs-2">
+            <asp:Label AssociatedControlID="chkConsciente" runat="server">
+                <asp:CheckBox ID="chkConsciente" runat="server"/>Consciente
+            </asp:Label>
+        </div>
+            <div class="col-xs-2">
+            <asp:Label AssociatedControlID="chkNoDeficitMotor" runat="server">
+                <asp:CheckBox ID="chkNoDeficitMotor" runat="server"/>No deficit motor
+            </asp:Label>
+        </div>
+            <div class="col-xs-2">
+            <asp:Label AssociatedControlID="chkNoDeficitSensitivo" runat="server">
+                <asp:CheckBox ID="chkNoDeficitSensitivo" runat="server"/>No deficit sensitivo
+            </asp:Label>
+        </div>
+            <div class="col-xs-2">
+            <asp:Label AssociatedControlID="chkOrientado" runat="server">
+                <asp:CheckBox ID="chkOrientado" runat="server"/>Orientado
+            </asp:Label>
+        </div>
+        </div>
+        <hr />
+            <h4>Escala Glasgow</h4>
+        <div class="row">
+            <div class="col-xs-2">
+                <asp:Label AssociatedControlID="chkNormal" runat="server">
+                    <asp:CheckBox ID="chkNormal" runat="server"/>Normal
+                </asp:Label>
+            </div>
+            <div class="col-xs-2">
+                <asp:Label AssociatedControlID="chkOcular" runat="server">
+                    <asp:CheckBox ID="chkOcular" runat="server"/>Ocular
+                </asp:Label>
+            </div>
+            <div class="col-xs-2 lighter">
+                <asp:Label AssociatedControlID="chkMiosis" runat="server">
+                    <asp:CheckBox ID="chkMiosis" runat="server"/>Miosis
+                </asp:Label>
+            </div>
+            <div class="col-xs-2 lighter">
+                <asp:Label AssociatedControlID="chkEspontanea" runat="server">
+                    <asp:CheckBox ID="chkEspontanea" runat="server"/>Espontanea
+                </asp:Label>
+            </div>
+            <div class="col-xs-2 lighter">
+                <asp:Label AssociatedControlID="chkMidriasis" runat="server">
+                    <asp:CheckBox ID="chkMidriasis" runat="server"/>Midriasis
+                </asp:Label>
+            </div>
+            <div class="col-xs-2 lighter">
+                <asp:Label AssociatedControlID="chkVoz" runat="server">
+                    <asp:CheckBox ID="chkVoz" runat="server"/>Voz
+                </asp:Label>
+            </div>
+            <div class="col-xs-2 lighter">
+                <asp:Label AssociatedControlID="chkReactiva" runat="server">
+                    <asp:CheckBox ID="chkReactiva" runat="server"/>Reactiva
+                </asp:Label>
+            </div>
+            <div class="col-xs-2 lighter">
+                <asp:Label AssociatedControlID="chkDolor" runat="server">
+                    <asp:CheckBox ID="chkDolor" runat="server"/>Dolor
+                </asp:Label>
+            </div>
+            <div class="col-xs-2 lighter">
+                <asp:Label AssociatedControlID="chkNoReactiva" runat="server">
+                    <asp:CheckBox ID="chkNoReactiva" runat="server"/>No Reactiva
+                </asp:Label>
+            </div>
+            <div class="col-xs-2 lighter">
+                <asp:Label AssociatedControlID="chkNinguno" runat="server">
+                    <asp:CheckBox ID="chkNinguno" runat="server"/>Ninguno
+                </asp:Label>
+            </div>
+        </div>
+        <hr />
+            <h4>Oral</h4>
+        <div class="row">
+            <div class="col-xs-2">
+                <asp:Label AssociatedControlID="chkFaringeNormal" runat="server">
+                    <asp:CheckBox ID="chkFaringeNormal" runat="server"/>Faringe Normal
+                </asp:Label>
+            </div>
+            <div class="col-xs-2">
+                <asp:Label AssociatedControlID="ckMembTimpNormal" runat="server">
+                    <asp:CheckBox ID="ckMembTimpNormal" runat="server"/>Membram Timp Normal
+                </asp:Label>
+            </div>
+            <div class="col-xs-2">
+                <asp:Label AssociatedControlID="chkAmigdalasNormales" runat="server">
+                    <asp:CheckBox ID="chkAmigdalasNormales" runat="server"/>Amigdalas Normales
+                </asp:Label>
+            </div>
+            <div class="col-xs-2">
+                <asp:Label AssociatedControlID="chkCondAudiNormal" runat="server">
+                    <asp:CheckBox ID="chkCondAudiNormal" runat="server"/>Conductos Audit Normales
+                </asp:Label>
+            </div>
+        </div>
+        <hr />
+            <h4>Sistema Cardiovascular</h4>
             <div class="row">
                  <div class="col-xs-2">
-                <asp:Label AssociatedControlID="chkConsciente" runat="server">
-                    <asp:CheckBox ID="chkConsciente" runat="server"/>Consciente
+                <asp:Label AssociatedControlID="chkRsCsRs" runat="server">
+                    <asp:CheckBox ID="chkRsCsRs" runat="server"/>RsCsRs
                 </asp:Label>
             </div>
-             <div class="col-xs-2">
-                <asp:Label AssociatedControlID="chkNoDeficitMotor" runat="server">
-                    <asp:CheckBox ID="chkNoDeficitMotor" runat="server"/>No deficit motor
+            <div class="col-xs-2">
+                <asp:Label AssociatedControlID="chkNoIngurgitacion" runat="server">
+                    <asp:CheckBox ID="chkNoIngurgitacion" runat="server"/>No ingurgitacion
                 </asp:Label>
             </div>
-             <div class="col-xs-2">
-                <asp:Label AssociatedControlID="chkNoDeficitSensitivo" runat="server">
-                    <asp:CheckBox ID="chkNoDeficitSensitivo" runat="server"/>No deficit sensitivo
+            <div class="col-xs-2">
+                <asp:Label AssociatedControlID="chkLlenadoCapilar" runat="server">
+                    <asp:CheckBox ID="chkLlenadoCapilar" runat="server"/>Llenado Cap <2seg
                 </asp:Label>
             </div>
-             <div class="col-xs-2">
-                <asp:Label AssociatedControlID="chkOrientado" runat="server">
-                    <asp:CheckBox ID="chkOrientado" runat="server"/>Orientado:Persona,lugar,tiempo
+            <div class="col-xs-2">
+                <asp:Label AssociatedControlID="chkPulsosNormales" runat="server">
+                    <asp:CheckBox ID="chkPulsosNormales" runat="server"/>Pulsos Normales
                 </asp:Label>
             </div>
             </div>
-            <h4>Escala Glasgow</h4>
+            
         </asp:Panel>
-        <div>
-            <p>Testing</p>
-        </div>
-        <!--> Testing for git <-->
+       
     </div>
          
     

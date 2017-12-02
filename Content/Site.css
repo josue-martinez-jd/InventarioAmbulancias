@@ -13,8 +13,7 @@ body {
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
 input,
-select,
-textarea {
+select {
     max-width: 280px;
 }
 
@@ -33,9 +32,19 @@ textarea {
     color: blue;
 }
 
-#MainContent_infoMedicos .col-md-2 {
-    height: 30px;
-    width: 140px;
+.text-style {
+    color: #0088de;
+    text-align: right;
+    font-size: 115%;
+    font-weight: bold;
+}
+
+#MainContent_infoMedicos .col-xs-4 {
+    width:25%; 
+}
+
+#MainContent_infoMedicos .textBoxes {
+    max-width:60%; 
 }
 
 p {
@@ -110,10 +119,26 @@ h3.SignosVitales_ExamenFisico {
     text-align:center; 
 }
 
+
 #MainContent_ExamenFisico .col-xs-2 {
-    width:50%
+    width: 25%;
+    margin-left: 6%;
 }
 
+.lighter label {
+    font-weight: lighter;
+}
+
+#MainContent_HistoriaClinica .col-md-6 {
+    width: 100%;
+    margin: 2%;
+    height: 275px;
+    margin-bottom: -0.5%;
+}
+
+#MainContent_HistoriaClinica textarea {
+    width: 95%;
+    height: 95%
 
 
 
