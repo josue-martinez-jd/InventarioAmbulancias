@@ -11,4 +11,9 @@ public partial class About : Page
     {
 
     }
+
+    public void test()
+    {
+        
+    }
 }
