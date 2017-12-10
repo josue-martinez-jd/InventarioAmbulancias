@@ -27,17 +27,18 @@ public partial class _Default : Page
     //--------------------------------------------Guarda la Boleta---------------------------------------------
     protected void btnGuardarBoleta_Click(object sender, EventArgs e)
     {
-        foreach (Historial item in Historial.HistorialList)
-        {
-            if (item.Id == Historial.HistorialListLength())
-            {
-                this.setForm(item);
-                //MSJ: Boleta guardada con exito
-                this.clearForm();
-            }
-        }
-        
-        lblTestHistorial.Text = Print.printHistorialList();
+        lblTestHistorial.Text = txtBase.Text;
+        //foreach (Historial item in Historial.HistorialList)
+        //{
+        //    if (item.Id == Historial.HistorialListLength())
+        //    {
+        //        this.setForm(item);
+        //        //MSJ: Boleta guardada con exito
+        //        this.clearForm();
+        //    }
+        //}
+
+        //lblTestHistorial.Text = Print.printHistorialList();
     }
 
     //-------------------------------------------Descartar la Boleta-------------------------------------------
@@ -267,4 +268,5 @@ public partial class _Default : Page
         clearCheckbox(chkVoz);
         clearCheckbox(ckMembTimpNormal);
     }
+
 }
