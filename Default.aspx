@@ -377,9 +377,12 @@
     <div class="row">
         <div class="col-xs-6">
             <asp:Button ID="btnGuardarBoleta" Text="Guardar Boleta" runat="server"/>
-        </div>
+        &nbsp;</div>
         <div class="col-xs-6">
-            <asp:Button href="~/" ID="btnDescartarBoleta" Text="Descartar Boleta" runat="server"/>
+            <asp:Button href="~/" ID="btnDescartarBoleta" Text="Descartar Boleta" runat="server" OnClick="btnDescartarBoleta_Click"/>
+            <asp:Label ID="lblTestHistorial" runat="server" Text="label test"></asp:Label>
+            <br />
+            <br />
         </div>
     </div>
 
