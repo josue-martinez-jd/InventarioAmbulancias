@@ -1,8 +1,7 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
-
+﻿
+    <%@ Page Title="Home Page" MaintainScrollPositionOnPostBack="true" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-
-    <div class="jumbotron">
+        <div class="jumbotron">
       
         <table class="nav-justified">
             <tr>
@@ -342,7 +341,7 @@
                          Cantidad:<asp:TextBox ID="txtCantidadMedicamento" class="textBoxes" type="number" runat="server"></asp:TextBox>
                     </div>
                      <div class="col-xs-2">
-                         <asp:Button ID="btnAgregarMedicamento" class="buttons" Text="Agregar" runat="server"/>
+                         <asp:Button ID="btnAgregarMedicamento" class="buttons" Text="Agregar"  runat="server"/>
                     </div>
                 </div>
             </asp:Panel>
@@ -366,7 +365,7 @@
                          Cantidad:<asp:TextBox ID="txtCantidadEquipo" class="textBoxes" type="number" runat="server"></asp:TextBox>
                     </div>
                      <div class="col-xs-2">
-                         <asp:Button ID="btnAgregarEquipo" class="buttons" Text="Agregar" runat="server"/>
+                         <asp:Button ID="btnAgregarEquipo" class="buttons" Text="Agregar"   runat="server"/>
                     </div>
                 </div> 
             </asp:Panel>
@@ -376,14 +375,19 @@
     
     <div class="row">
         <div class="col-xs-6">
-            <asp:Button ID="btnGuardarBoleta" Text="Guardar Boleta" runat="server"/>
-        &nbsp;</div>
+            <asp:Button ID="btnGuardarBoleta" Text="Guardar Boleta"  runat="server" OnClick="btnGuardarBoleta_Click"/>
+        </div>
         <div class="col-xs-6">
-            <asp:Button href="~/" ID="btnDescartarBoleta" Text="Descartar Boleta" runat="server" OnClick="btnDescartarBoleta_Click"/>
-            <asp:Label ID="lblTestHistorial" runat="server" Text="label test"></asp:Label>
-            <br />
-            <br />
+            <asp:Button href="~/" ID="btnDescartarBoleta" Text="Descartar Boleta" runat="server"/>
         </div>
     </div>
 
+        <div class="row">
+            <div class="col-lg-6">
+                <asp:Label ID="lblTestHistorial" Text="test" style="color:red" runat="server"></asp:Label>
+            </div>
+        </div>
+  
 </asp:Content>
+
+
