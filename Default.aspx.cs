@@ -10,9 +10,7 @@ public partial class _Default : Page
     //------------------------------------------------Page Load------------------------------------------------
     protected void Page_Load(object sender, EventArgs e)
     {
-        txaHistoriaClinica.Value = "this test";
         Historial.createEmpyHistory();
-       
 
         if (!IsPostBack) {
             drpCategoriaEquipo.Items.Add("category1");
@@ -27,18 +25,20 @@ public partial class _Default : Page
     //--------------------------------------------Guarda la Boleta---------------------------------------------
     protected void btnGuardarBoleta_Click(object sender, EventArgs e)
     {
-        lblTestHistorial.Text = txtBase.Text;
-        //foreach (Historial item in Historial.HistorialList)
-        //{
-        //    if (item.Id == Historial.HistorialListLength())
-        //    {
-        //        this.setForm(item);
-        //        //MSJ: Boleta guardada con exito
-        //        this.clearForm();
-        //    }
-        //}
 
-        //lblTestHistorial.Text = Print.printHistorialList();
+
+        foreach (Historial item in Historial.HistorialList)
+        {
+            if (item.Id == Historial.HistorialListLength())
+            {
+                this.setForm(item);
+                //MSJ: Boleta guardada con exito
+                this.clearForm();
+            }
+        }
+
+       
+        lblTestHistorial.Text = String.Join(", ", Historial.HistorialList);
     }
 
     //-------------------------------------------Descartar la Boleta-------------------------------------------
@@ -57,14 +57,15 @@ public partial class _Default : Page
             drpCategoriaMedicamento.SelectedItem.Text,drpTipoMedicamento.SelectedItem.Text,
             drpNombreMedicamento.SelectedItem.Text,Int32.Parse(txtCantidadMedicamento.Text));
 
-        foreach(Historial item in Historial.HistorialList)
+        foreach (Historial item in Historial.HistorialList)
         {
             if(item.Id== Historial.HistorialListLength())
             {
                 item.MedicamentoList.Add(newMedicamento);
+                lblTestHistorial.Text = String.Join(", ", Historial.HistorialList);
             }
         }
-        lblTestHistorial.Text = Print.printHistorialList();
+        
     }
 
     protected void btnAgregarEquipo_Click(object sender, EventArgs e)
@@ -78,10 +79,11 @@ public partial class _Default : Page
             if (item.Id == Historial.HistorialListLength())
             {
                 item.EquipoList.Add(newEquipo);
+                lblTestHistorial.Text = String.Join(", ", Historial.HistorialList);
             }
         }
 
-        lblTestHistorial.Text = Print.printHistorialList();
+        
     }
 
     //----------------------Retorna el valor de los Checkboxes y Textboxes para ser guardados en el historial-----------------------
@@ -268,5 +270,6 @@ public partial class _Default : Page
         clearCheckbox(chkVoz);
         clearCheckbox(ckMembTimpNormal);
     }
+
 
 }

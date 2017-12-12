@@ -341,7 +341,7 @@
                          Cantidad:<asp:TextBox ID="txtCantidadMedicamento" class="textBoxes" type="number" runat="server"></asp:TextBox>
                     </div>
                      <div class="col-xs-2">
-                         <asp:Button ID="btnAgregarMedicamento" class="buttons" Text="Agregar"  runat="server"/>
+                         <asp:Button ID="btnAgregarMedicamento" class="buttons" Text="Agregar"  runat="server" OnClick="btnAgregarMedicamento_Click"/>
                     </div>
                 </div>
             </asp:Panel>
@@ -365,7 +365,7 @@
                          Cantidad:<asp:TextBox ID="txtCantidadEquipo" class="textBoxes" type="number" runat="server"></asp:TextBox>
                     </div>
                      <div class="col-xs-2">
-                         <asp:Button ID="btnAgregarEquipo" class="buttons" Text="Agregar"   runat="server"/>
+                         <asp:Button ID="btnAgregarEquipo" class="buttons" Text="Agregar"   runat="server" OnClick="btnAgregarEquipo_Click"/>
                     </div>
                 </div> 
             </asp:Panel>
