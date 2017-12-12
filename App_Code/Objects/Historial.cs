@@ -177,13 +177,13 @@ public class Historial
 
     public override string ToString()
     {
-        return "Id: "+_id + ""+_medico + ", Paramedico: " + _paramedico + ", Unidad: " + _unidad + ", Base: " + _base + ", Nombre del Paciente: " + _nombrePaciente + ", Edad: " + _edad + ", Sexp: " + _sexo 
+        return "Id: "+_id + ", Medico: "+_medico + ", Paramedico: " + _paramedico + ", Unidad: " + _unidad + ", Base: " + _base + ", Nombre del Paciente: " + _nombrePaciente + ", Edad: " + _edad + ", Sexo: " + _sexo 
             + ", Cedula: " + _cedula + ", Historia Clinica: " + _historiaClinica + ", App: " + _app + ", Tratamientos: " + _tratamiento + ", Alergias: " + _alergia + ", Consciente: " + _consciente 
             + ", Orientado: " + _orientado + ", Deficit Motor: " + _DeficitMotor + ", Deficit Sensitivo: " + _DeficitSensitivo + ", Llenado Capilar < 2s"+ _llenadoCap + ", Ingurgitacion: "+ _Ingurgitacion 
             + ", Pulsos Normales: "+_pulsosNormales+", RsCsRs: "+_RsCsRs+", Faringe Normal: "+_faringeNormal+", Conductos Auditivos Normales; "+_conductosAuditNormal+", Membrana Timpanica Normal: "+ _membranaTimpNormal 
             + ", Amigdalas Normales: " + _amigdalasNormal + ", Glasgow Normal: " + _glasgowNormal + ", Glasgow Espontanea: " + _glasgowEspontanea + ", Glasgow Reactiva: " + _glasgowReactiva 
             + ", Ningun Glasgow: " + _glasgowNinguno + ", Glasgow Ocular: " + _glasgowOcular + ", Glasgow Midriasis: " +_glasgowMidriasis + ", Glasgow Dolor: " + _glasgowDolor +", Glasgow Miosis: " + _glasgowMiosis 
-            + ", Glasgow Voz: " + _glasgowVoz  + ", Medicamentos utilizados: " + _MedicamentoList + ", Equipo utilizado: " + _EquipoList ;
+            + ", Glasgow Voz: " + _glasgowVoz  + ", Medicamentos utilizados: " + _MedicamentoList.ToString() + ", Equipo utilizado: " + _EquipoList.ToString() + ", Submitted: "+_submitted;
     }
 
     public static int HistorialListLength()
@@ -192,34 +192,25 @@ public class Historial
         {
             return HistorialList.Count;
         }
-        else
-        {
-            return 1;
-        }
+
+        return 0;
     }
 
     public static void createEmpyHistory()
     {
-        if (HistorialList != null)
+        if (HistorialList.Count > 0)
         {
-            foreach (Historial item in HistorialList)
+            if (HistorialSubmitted() == true)
             {
-                if (item.Id == HistorialListLength())
-                {
-                    if (item.Submitted == true)
-                    {
-                        Historial newHistorial = new Historial((HistorialListLength() + 1), false);
-                    }
-                    else
-                    {
-                        //ERROR: Debe completar o descartar el formulario actual antes de crear otro.
-                    }
-                }
+                Historial newHistorial = new Historial((Historial.HistorialListLength() + 1), false);
+                HistorialList.Add(newHistorial);
             }
+            
         }
         else
         {
-            Historial newHistorial = new Historial((HistorialListLength() + 1), false);
+            Historial newHistorial = new Historial((1), false);
+            HistorialList.Add(newHistorial);
         }
     }
 
@@ -235,6 +226,21 @@ public class Historial
             }
         }
 
+    }
+
+    public static Boolean HistorialSubmitted()
+    {
+        foreach (Historial item in HistorialList)
+            {
+                if (item.Id == HistorialListLength())
+                {
+                    if (item.Submitted == true)
+                    {
+                        return true;
+                    }
+                }
+            }
+        return false; 
     }
 
 }
