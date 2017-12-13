@@ -10,8 +10,8 @@ public partial class _Default : Page
     //------------------------------------------------Page Load------------------------------------------------
     protected void Page_Load(object sender, EventArgs e)
     {
-        DataBase dataBase = new DataBase();
-        dataBase.createEmpyHistory();
+        HistorialCrear historial = new HistorialCrear();
+        historial.createEmpyHistory();
 
         if (!IsPostBack) {
             drpNombreEquipo.Items.Add("Cojin lateral");
@@ -20,86 +20,82 @@ public partial class _Default : Page
             drpNombreEquipo.Items.Add("Hola articulada");
             drpNombreEquipo.Items.Add("Mangeras de alta presion");
             drpNombreEquipo.Items.Add("Mascarilla");
-
             drpNombreMedicamento.Items.Add("buscapina");
             drpNombreMedicamento.Items.Add("voltaren");
             drpNombreMedicamento.Items.Add("Suero dextrosa50% 50ml");
             drpNombreMedicamento.Items.Add("Suero Fisiologico 100ml");
             drpNombreMedicamento.Items.Add("Epinefrina");
             drpNombreMedicamento.Items.Add("Artropina");
-
-            dataBase.crearInventario();
-
+            InicializarInventario inicializar = new InicializarInventario();
+            inicializar.crearInventario();
         }
     }
 
     //--------------------------------------------Guarda la Boleta---------------------------------------------
     protected void btnGuardarBoleta_Click(object sender, EventArgs e)
     {
-        setForm();
-        clearForm();
+            setForm();
+            clearForm();
     }
 
     //-------------------------------------------Descartar la Boleta-------------------------------------------
     
     protected void btnDescartarBoleta_Click1(object sender, EventArgs e)
     {
-        //MedicamentoAmpolla medicamentoAmpolla = new MedicamentoAmpolla();
-        //medicamentoAmpolla.descartarEquipo();
+        try
+        {
+            MedicamentoAmpolla medicamentoAmpolla = new MedicamentoAmpolla();
+            MedicamentoParo medicamentoParo = new MedicamentoParo();
+            MedicamentoSuero medicamentoSuero = new MedicamentoSuero();
+            HerramientaEstabilizador herramientaEstabilizador = new HerramientaEstabilizador();
+            HerramientaIntubacion herramientaIntubacion = new HerramientaIntubacion();
+            HerramientaOxigeno herramientaOxigeno = new HerramientaOxigeno();
 
-        //MedicamentoParo medicamentoParo = new MedicamentoParo();
-        //medicamentoParo.descartarEquipo();
+            medicamentoAmpolla.descartarEquipo();
+            medicamentoParo.descartarEquipo();
+            medicamentoSuero.descartarEquipo();
+            herramientaEstabilizador.descartarEquipo();
+            herramientaIntubacion.descartarEquipo();
+            herramientaOxigeno.descartarEquipo();
 
-        //MedicamentoSuero medicamentoSuero = new MedicamentoSuero();
-        //medicamentoSuero.descartarEquipo();
-
-        //HerramientaEstabilizador herramientaEstabilizador = new HerramientaEstabilizador();
-        //herramientaEstabilizador.descartarEquipo();
-
-        //HerramientaIntubacion herramientaIntubacion = new HerramientaIntubacion();
-        //herramientaIntubacion.descartarEquipo();
-
-        //HerramientaOxigeno herramientaOxigeno = new HerramientaOxigeno();
-        //herramientaOxigeno.descartarEquipo();
-
-        //this.clearForm();
-        ////MSJ: Boleta descartada con exito
-
-        //lblTestHistorial.Text = String.Join(", ", DataBase.HistorialList);
-
-        DataBase dataBase = new DataBase();
-        lblTestHistorial.Text = dataBase.encuentraHistorial(txtCedula.Text);
-
-
+            this.clearForm();
+            lblTestHistorial.Text = "Boleta descartada con exito";
+        }
+        catch (Exception h) { lblTestHistorial.Text = "Error al descartar la boleta"; }
     }
     //------------------------------------Agrega Medicamentos y Equipo al Historial------------------------------------
     protected void btnAgregarMedicamento_Click(object sender, EventArgs e)
     {
+        try
+        {
+            MedicamentoAmpolla medicamentoAmpolla = new MedicamentoAmpolla();
+            MedicamentoParo medicamentoParo = new MedicamentoParo();
+            MedicamentoSuero medicamentoSuero = new MedicamentoSuero();
 
-        MedicamentoAmpolla medicamentoAmpolla = new MedicamentoAmpolla();
-        medicamentoAmpolla.agregarEquipo(drpNombreMedicamento.SelectedItem.Text, Int32.Parse(txtCantidadMedicamento.Text));
+            medicamentoAmpolla.agregarEquipo(drpNombreMedicamento.SelectedItem.Text, Int32.Parse(txtCantidadMedicamento.Text));
+            medicamentoParo.agregarEquipo(drpNombreMedicamento.SelectedItem.Text, Int32.Parse(txtCantidadMedicamento.Text));
+            medicamentoSuero.agregarEquipo(drpNombreMedicamento.SelectedItem.Text, Int32.Parse(txtCantidadMedicamento.Text));
 
-        MedicamentoParo medicamentoParo = new MedicamentoParo();
-        medicamentoParo.agregarEquipo(drpNombreMedicamento.SelectedItem.Text, Int32.Parse(txtCantidadMedicamento.Text));
-
-        MedicamentoSuero medicamentoSuero = new MedicamentoSuero();
-        medicamentoSuero.agregarEquipo(drpNombreMedicamento.SelectedItem.Text, Int32.Parse(txtCantidadMedicamento.Text));
-
-        lblTestHistorial.Text = String.Join(", ", DataBase.HistorialList);
+            lblTestHistorial.Text = "Medicamento agregado con exito";
+        }
+        catch (Exception h) { lblTestHistorial.Text = "Error al agregar Medicamento"; }
     }
 
     protected void btnAgregarEquipo_Click(object sender, EventArgs e)
     {
-        HerramientaEstabilizador herramientaEstabilizador = new HerramientaEstabilizador();
-        herramientaEstabilizador.agregarEquipo(drpNombreEquipo.SelectedItem.Text, Int32.Parse(txtCantidadEquipo.Text));
+        try
+        {
+            HerramientaEstabilizador herramientaEstabilizador = new HerramientaEstabilizador();
+            HerramientaIntubacion herramientaIntubacion = new HerramientaIntubacion();
+            HerramientaOxigeno herramientaOxigeno = new HerramientaOxigeno();
 
-        HerramientaIntubacion herramientaIntubacion = new HerramientaIntubacion();
-        herramientaIntubacion.agregarEquipo(drpNombreEquipo.SelectedItem.Text, Int32.Parse(txtCantidadEquipo.Text));
+            herramientaEstabilizador.agregarEquipo(drpNombreEquipo.SelectedItem.Text, Int32.Parse(txtCantidadEquipo.Text));
+            herramientaIntubacion.agregarEquipo(drpNombreEquipo.SelectedItem.Text, Int32.Parse(txtCantidadEquipo.Text));
+            herramientaOxigeno.agregarEquipo(drpNombreEquipo.SelectedItem.Text, Int32.Parse(txtCantidadEquipo.Text));
 
-        HerramientaOxigeno herramientaOxigeno = new HerramientaOxigeno();
-        herramientaOxigeno.agregarEquipo(drpNombreEquipo.SelectedItem.Text, Int32.Parse(txtCantidadEquipo.Text));
-
-        lblTestHistorial.Text = String.Join(", ", DataBase.HistorialList);
+            lblTestHistorial.Text = "Herramienta agregada con exito";
+        }
+        catch (Exception h) { lblTestHistorial.Text = "Error al agregar Herramienta"; }
     }
     
     //----------------------Retorna el valor de los Checkboxes y Textboxes para ser guardados en el historial-----------------------
@@ -113,7 +109,6 @@ public partial class _Default : Page
         {
             return textBox.Text;
         }
-       
     }
 
     public string returnChecked(CheckBox checkBox)
@@ -170,10 +165,9 @@ public partial class _Default : Page
     public void setForm()
     {
         try {
-
-            foreach (Historial item in DataBase.HistorialList)
+            foreach (Historial item in InicializarInventario.HistorialList)
             {
-                if (item.Id == DataBase.HistorialList.Count)
+                if (item.Id == InicializarInventario.HistorialList.Count)
                 {
                     item.Fecha = "01/01/2017";
                     item.Medico = txtMedico.Text;
@@ -187,12 +181,10 @@ public partial class _Default : Page
                     item.App = this.returnApp();
                     item.Tratamiento = this.returnTextOrChecked(chkNoTratamiento, txtTratamiento);
                     item.Alergia = this.returnTextOrChecked(chkAlergias, txtAlergias);
-
                     item.Consciente = this.returnChecked(chkConsciente);
                     item.Orientado = this.returnChecked(chkOrientado);
                     item.DeficitMotor = this.returnChecked(chkNoDeficitMotor);
                     item.DeficitSensitivo = this.returnChecked(chkNoDeficitSensitivo);
-
                     item.GlasgowNormal = this.returnChecked(chkNormal);
                     item.GlasgowEspontanea = this.returnChecked(chkEspontanea);
                     item.GlasgowReactiva = this.returnChecked(chkReactiva);
@@ -202,27 +194,21 @@ public partial class _Default : Page
                     item.GlasgowDolor = this.returnChecked(chkDolor);
                     item.GlasgowVoz = this.returnChecked(chkVoz);
                     item.GlasgowMiosis = this.returnChecked(chkMiosis);
-
                     item.FaringeNormal = this.returnChecked(chkFaringeNormal);
                     item.ConductosAuditNormal = this.returnChecked(chkCondAudiNormal);
                     item.MembranaTimpNormal = this.returnChecked(ckMembTimpNormal); //frontend, deberia ser chkMembTimpNormal
                     item.AmigdalasNormal = this.returnChecked(chkAmigdalasNormales);
-
                     item.Ingurgitacion = this.returnChecked(chkNoIngurgitacion);
                     item.LlenadoCap = this.returnChecked(chkLlenadoCapilar);
                     item.RsCsRs = this.returnChecked(chkRsCsRs);
                     item.PulsosNormales = this.returnChecked(chkPulsosNormales);
-
                     item.Submitted = true;
-                    
+
+                    lblTestHistorial.Text = "Boleta guardada con exito";
                 }
             }
-            lblTestHistorial.Text = String.Join(", ", DataBase.HistorialList);
         }
-        catch(Exception h)
-        {
-            lblTestHistorial.Text = "Valores invalidos";
-        }
+        catch(Exception h) { lblTestHistorial.Text = "Valores invalidos, intente de nuevo"; }
     }
 
     //--------------------------------------------Checkboxes Mujer/Hombre--------------------------------------------
@@ -238,14 +224,10 @@ public partial class _Default : Page
 
     //-------------------------------Se limpian los Textboxes y Checkboxes de la Boleta-------------------------------
     public void clearTextbox(TextBox textBox)
-    {
-        textBox.Text = "";
-    }
+    { textBox.Text = ""; }
 
     public void clearCheckbox(CheckBox checkBox)
-    {
-        checkBox.Checked = false;
-    }
+    { checkBox.Checked = false; }
 
     public void clearForm()
     {
@@ -267,7 +249,6 @@ public partial class _Default : Page
         clearTextbox(txtTemp);
         clearTextbox(txtTratamiento);
         clearTextbox(txtUnidad);
-
         clearCheckbox(chkAlergias);
         clearCheckbox(chkAmigdalasNormales);
         clearCheckbox(chkAsma);
@@ -302,9 +283,6 @@ public partial class _Default : Page
         clearCheckbox(chkVoz);
         clearCheckbox(ckMembTimpNormal);
     }
-
-
-   
 }
 
 
