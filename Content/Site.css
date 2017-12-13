@@ -38,12 +38,25 @@ select {
     font-weight: bold;
 }
 
-#MainContent_infoMedicos .col-xs-4 {
-    width:25%; 
+.buttons {
+    height: 50px;
+    max-width: 50%;
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;
 }
 
 #MainContent_infoMedicos .textBoxes {
-    max-width:60%; 
+   width:80%; 
+   max-width:90%; 
+}
+
+#MainContent_infoMedicos .col-xs-4 {
+    width:20%; 
 }
 
 p {
@@ -52,10 +65,6 @@ p {
     margin-left: 0.5cm;
     font-size: 115%;
     font-weight: bold;
-}
-
-#MainContent_infoMedicos .col-md-2 .textBoxes {
-    width: 140px;
 }
 
 h3 {
@@ -201,6 +210,27 @@ h3.SignosVitales_ExamenFisico {
     font-size: 16px;
     cursor: pointer;
     border-radius: 10px;
+}
+
+
+#MainContent_pnlHistorial .col-lg-5, .textBoxes, .buttons { 
+    width: 50%;
+}
+
+#MainContent_txaHistorial {
+    width: 120%;
+    height: 900px;
+}
+
+#MainContent_pnlInventario .col-xs-1{
+    width: 30%;
+    height: 100%; 
+}
+
+#MainContent_pnlInventario .buttons {
+    width: 80%; 
+    margin-left: -5%; 
+   
 }
 
 
