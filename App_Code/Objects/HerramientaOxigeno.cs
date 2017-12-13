@@ -8,47 +8,34 @@ using System.Web;
 /// </summary>
 public class HerramientaOxigeno : Equipo
 {
-    
-
     //Herencia
-    public HerramientaOxigeno(
-        string pNombre, int pCant)
-        :base( pNombre,  pCant)
-    {
-
-    }
+    public HerramientaOxigeno( string pNombre, int pCant):base( pNombre,  pCant) { }
 
     public HerramientaOxigeno() { }
 
     //Polimorfismo
     public override void TipoEquipo()
-    {
-        Tipo = "Herramienta";
-    }
+    { Tipo = "Herramienta"; }
 
     public override void CategoriaEquipo()
-    {
-        Categoria = "Oxigeno";
-
-    }
+    { Categoria = "Oxigeno"; }
 
     public override void agregarEquipo( string nombreEquipo, int cantidadEquipo)
     {
-        foreach (Historial item in DataBase.HistorialList)
+        foreach (Historial item in InicializarInventario.HistorialList)
         {
-            if (item.Id == DataBase.HistorialList.Count)
+            if (item.Id == InicializarInventario.HistorialList.Count)
             {
-                foreach (HerramientaOxigeno med in DataBase.InventarioHerramientaOxigeno)
+                foreach (HerramientaOxigeno med in InicializarInventario.InventarioHerramientaOxigeno)
                 {
                     if (med.Nombre == nombreEquipo)
                     {
                         int cantMedicamentoMax = med.Cant;
-
                         med.Cant = cantidadEquipo;
                         item.HerramientaOxigenoList.Add(med);
 
-                        med.Cant = cantMedicamentoMax - cantidadEquipo;
-
+                        if (med.Cant == cantidadEquipo)
+                        { med.Cant = cantMedicamentoMax - cantidadEquipo; }
                     }
                 }
             }
@@ -57,13 +44,10 @@ public class HerramientaOxigeno : Equipo
 
     public override void descartarEquipo()
     {
-        foreach (Historial item in DataBase.HistorialList)
+        foreach (Historial item in InicializarInventario.HistorialList)
         {
-            if (item.Id == DataBase.HistorialList.Count)
-            {
-                item.HerramientaOxigenoList.Clear();
-
-            }
+            if (item.Id == InicializarInventario.HistorialList.Count)
+            { item.HerramientaOxigenoList.Clear(); }
         }
     }
 }

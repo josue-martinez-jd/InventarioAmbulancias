@@ -8,49 +8,34 @@ using System.Web;
 /// </summary>
 public class MedicamentoAmpolla:Equipo
 {
-    
-
     //Herencia
-    public MedicamentoAmpolla(
-        
-        string pNombre, int pCant)
-        :base(pNombre,  pCant)
-    {
-
-    }
+    public MedicamentoAmpolla( string pNombre, int pCant):base(pNombre,  pCant) { }
 
     public MedicamentoAmpolla() { }
 
     //Polimorfismo
     public override void TipoEquipo()
-    {
-            Tipo= "Medicamento";
-    }
+    { Tipo= "Medicamento"; }
 
     public override void CategoriaEquipo()
-    {
-           Categoria = "Ampolla";
-    }
+    { Categoria = "Ampolla"; }
 
     public override void agregarEquipo( string nombreEquipo, int cantidadEquipo)
     {
-
-        
-        foreach (Historial item in DataBase.HistorialList)
+        foreach (Historial item in InicializarInventario.HistorialList)
         {
-            if (item.Id == DataBase.HistorialList.Count)
+            if (item.Id == InicializarInventario.HistorialList.Count)
             {
-                foreach (MedicamentoAmpolla med in DataBase.InventarioMedicamentoAmpolla)
+                foreach (MedicamentoAmpolla med in InicializarInventario.InventarioMedicamentoAmpolla)
                 {
                     if (med.Nombre == nombreEquipo)
                     {
                         int cantMedicamentoMax = med.Cant;
-
                         med.Cant = cantidadEquipo;
                         item.MedicamentoAmpollaList.Add(med);
 
-                        med.Cant = cantMedicamentoMax - cantidadEquipo;
-
+                        if (med.Cant == cantidadEquipo)
+                        { med.Cant = cantMedicamentoMax - cantidadEquipo; }
                     }
                 }
             }
@@ -59,13 +44,10 @@ public class MedicamentoAmpolla:Equipo
 
     public override void descartarEquipo()
     {
-        foreach (Historial item in DataBase.HistorialList)
+        foreach (Historial item in InicializarInventario.HistorialList)
         {
-            if (item.Id == DataBase.HistorialList.Count)
-            {
-                item.MedicamentoAmpollaList.Clear();
-
-            }
+            if (item.Id == InicializarInventario.HistorialList.Count)
+            { item.MedicamentoAmpollaList.Clear(); }
         }
     }
 }

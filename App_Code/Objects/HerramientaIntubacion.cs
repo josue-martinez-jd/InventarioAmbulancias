@@ -8,48 +8,34 @@ using System.Web;
 /// </summary>
 public class HerramientaIntubacion : Equipo
 {
-    
-
     //Herencia
-    public HerramientaIntubacion(
-        string pNombre, int pCant)
-        :base( pNombre,  pCant)
-    {
-
-    }
+    public HerramientaIntubacion(string pNombre, int pCant):base( pNombre,  pCant) { }
 
     public HerramientaIntubacion() { }
 
     //Polimorfismo
     public override void TipoEquipo()
-    {
-        Tipo = "Herramienta";
-    }
+    { Tipo = "Herramienta"; }
 
     public override void CategoriaEquipo()
-    {
-        Categoria = "Intubacion";
-
-    }
+    { Categoria = "Intubacion"; }
 
     public override void agregarEquipo( string nombreEquipo, int cantidadEquipo)
     {
-        foreach (Historial item in DataBase.HistorialList)
+        foreach (Historial item in InicializarInventario.HistorialList)
         {
-            if (item.Id == DataBase.HistorialList.Count)
+            if (item.Id == InicializarInventario.HistorialList.Count)
             {
-
-                foreach (HerramientaIntubacion med in DataBase.InventarioHerramientaIntubacion)
+                foreach (HerramientaIntubacion med in InicializarInventario.InventarioHerramientaIntubacion)
                 {
                     if (med.Nombre == nombreEquipo)
                     {
                         int cantMedicamentoMax = med.Cant;
-
                         med.Cant = cantidadEquipo;
                         item.HerramientaIntubacionList.Add(med);
 
-                        med.Cant = cantMedicamentoMax - cantidadEquipo;
-
+                        if (med.Cant == cantidadEquipo)
+                        { med.Cant = cantMedicamentoMax - cantidadEquipo; }
                     }
                 }
             }
@@ -58,13 +44,10 @@ public class HerramientaIntubacion : Equipo
 
     public override void descartarEquipo()
     {
-        foreach (Historial item in DataBase.HistorialList)
+        foreach (Historial item in InicializarInventario.HistorialList)
         {
-            if (item.Id == DataBase.HistorialList.Count)
-            {
-                item.HerramientaIntubacionList.Clear();
-
-            }
+            if (item.Id == InicializarInventario.HistorialList.Count)
+            { item.HerramientaIntubacionList.Clear(); }
         }
     }
 }

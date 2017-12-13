@@ -8,61 +8,48 @@ using System.Web;
 /// </summary>
 public class Equipo
 {
-
     private string _Categoria;
     private string _Tipo;
     private string _Nombre;
     private int _Cant;
  
-
     public Equipo(string pNombre, int pCant)
     {
         Nombre = pNombre;
-        Cant = pCant;
-        
+        Cant = pCant; 
     }
 
-    public Equipo()
-    {
-        
+    public Equipo() { }
 
+    //Sets & Gets
+    //Tell don't ask
+    public string Categoria{ get{return _Categoria; }
+        set { if (value != "") { _Categoria = value; } }
     }
 
-    public string Categoria
-    {  get{return _Categoria; } set{ _Categoria = value;} }
+    public string Tipo { get { return _Tipo; }
+        set { if (value != "") { _Tipo = value; }  }
+    }
 
-    public string Tipo
-    { get { return _Tipo; } set { _Tipo = value; } }
+    public string Nombre { get { return _Nombre; }
+        set { if (value!="") { _Nombre = value; } }
+    }
 
-    public string Nombre
-    { get { return _Nombre; } set { _Nombre = value; } }
-
-    public int Cant
-    { get { return _Cant; } set { _Cant = value; } }
+    public int Cant { get { return _Cant; }
+        set { if (value >= 0) { _Cant = value; } }
+    }
 
     public override string ToString()
     {
         return "Tipo: "+_Tipo+ ", Categoria: " + _Categoria + ", Nombre: " +_Nombre+", Cantidad: "+_Cant+"";
     }
 
-    public virtual void TipoEquipo()
-    {
+    //Polimorfismo
+    public virtual void TipoEquipo() { }
 
-    }
+    public virtual void CategoriaEquipo() { }
 
-    public virtual void CategoriaEquipo()
-    {
+    public virtual void agregarEquipo(string nombreEquipo, int cantidadEquipo) { }
 
-    }
-
-    public virtual void agregarEquipo(string nombreEquipo, int cantidadEquipo)
-    {
-
-    }
-
-    public virtual void descartarEquipo()
-    {
-
-    }
-
+    public virtual void descartarEquipo() { }
 }
