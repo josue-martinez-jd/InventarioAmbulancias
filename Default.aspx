@@ -18,6 +18,10 @@
          <div class="row text-style">
         <br />
         <div class="col-xs-4 " > 
+            Fecha: <asp:TextBox class="textBoxes" ID="txtFecha" type="date" runat="server"  ></asp:TextBox>  
+        </div>
+
+        <div class="col-xs-4 " > 
             Medico/TEM: <asp:TextBox class="textBoxes" ID="txtMedico" runat="server"  ></asp:TextBox>  
         </div>
        
