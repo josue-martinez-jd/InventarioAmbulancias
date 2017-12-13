@@ -8,9 +8,8 @@ using System.Web;
 /// </summary>
 public class Historial 
 {
-    public static List<Historial> HistorialList = new List<Historial>();
-
     private int _id;
+    private string _fecha;
     private string _medico;
     private string _paramedico;
     private string _unidad;
@@ -52,8 +51,15 @@ public class Historial
     private string _glasgowVoz;
     private Boolean _submitted;
     
-    private List<Medicamento> _MedicamentoList = new List<Medicamento>();
-    private List<Equipo> _EquipoList = new List<Equipo>();
+    private List<MedicamentoAmpolla> _MedicamentoAmpollaList = new List<MedicamentoAmpolla>();
+    private List<MedicamentoSuero> _MedicamentoSueroList = new List<MedicamentoSuero>();
+    private List<MedicamentoParo> _MedicamentoParoList = new List<MedicamentoParo>();
+
+    private List<HerramientaEstabilizador> _HerramientaEstabilizadorList = new List<HerramientaEstabilizador>();
+    private List<HerramientaIntubacion> _HerramientaIntubacionList = new List<HerramientaIntubacion>();
+    private List<HerramientaOxigeno> _HerramientaOxigenoList = new List<HerramientaOxigeno>();
+
+
 
     public Historial( int pId, Boolean pSubmitted )
     {
@@ -70,14 +76,29 @@ public class Historial
             if (_submitted == false)
             { _id = value; } } }
 
-    public List<Medicamento> MedicamentoList
-    { get { return _MedicamentoList; } set { _MedicamentoList = value; } }
+    public List<MedicamentoAmpolla> MedicamentoAmpollaList
+    { get { return _MedicamentoAmpollaList; } set { _MedicamentoAmpollaList = value; } }
 
-    public List<Equipo> EquipoList
-    { get { return _EquipoList; } set { _EquipoList = value; } }
+    public List<MedicamentoSuero> MedicamentoSueroList
+    { get { return _MedicamentoSueroList; } set { _MedicamentoSueroList = value; } }
+
+    public List<MedicamentoParo> MedicamentoParoList
+    { get { return _MedicamentoParoList; } set { _MedicamentoParoList = value; } }
+
+    public List<HerramientaEstabilizador> HerramientaEstabilizadorList
+    { get { return _HerramientaEstabilizadorList; } set { _HerramientaEstabilizadorList = value; } }
+
+    public List<HerramientaIntubacion> HerramientaIntubacionList
+    { get { return _HerramientaIntubacionList; } set { _HerramientaIntubacionList = value; } }
+
+    public List<HerramientaOxigeno> HerramientaOxigenoList
+    { get { return _HerramientaOxigenoList; } set { _HerramientaOxigenoList = value; } }
 
     public string Medico
     { get { return _medico; } set { _medico = value; } }
+
+    public string Fecha
+    { get { return _fecha; } set { _fecha = value; } }
 
     public string Paramedico
     { get { return _paramedico; } set { _paramedico = value; } }
@@ -177,70 +198,15 @@ public class Historial
 
     public override string ToString()
     {
-        return "Id: "+_id + ", Medico: "+_medico + ", Paramedico: " + _paramedico + ", Unidad: " + _unidad + ", Base: " + _base + ", Nombre del Paciente: " + _nombrePaciente + ", Edad: " + _edad + ", Sexo: " + _sexo 
+        return "Id: "+_id + ", Fecha: "+ _fecha + ", Medico: "+_medico + ", Paramedico: " + _paramedico + ", Unidad: " + _unidad + ", Base: " + _base + ", Nombre del Paciente: " + _nombrePaciente + ", Edad: " + _edad + ", Sexo: " + _sexo 
             + ", Cedula: " + _cedula + ", Historia Clinica: " + _historiaClinica + ", App: " + _app + ", Tratamientos: " + _tratamiento + ", Alergias: " + _alergia + ", Consciente: " + _consciente 
             + ", Orientado: " + _orientado + ", Deficit Motor: " + _DeficitMotor + ", Deficit Sensitivo: " + _DeficitSensitivo + ", Llenado Capilar < 2s"+ _llenadoCap + ", Ingurgitacion: "+ _Ingurgitacion 
             + ", Pulsos Normales: "+_pulsosNormales+", RsCsRs: "+_RsCsRs+", Faringe Normal: "+_faringeNormal+", Conductos Auditivos Normales; "+_conductosAuditNormal+", Membrana Timpanica Normal: "+ _membranaTimpNormal 
             + ", Amigdalas Normales: " + _amigdalasNormal + ", Glasgow Normal: " + _glasgowNormal + ", Glasgow Espontanea: " + _glasgowEspontanea + ", Glasgow Reactiva: " + _glasgowReactiva 
             + ", Ningun Glasgow: " + _glasgowNinguno + ", Glasgow Ocular: " + _glasgowOcular + ", Glasgow Midriasis: " +_glasgowMidriasis + ", Glasgow Dolor: " + _glasgowDolor +", Glasgow Miosis: " + _glasgowMiosis 
-            + ", Glasgow Voz: " + _glasgowVoz  + ", Medicamentos utilizados: " + _MedicamentoList.ToString() + ", Equipo utilizado: " + _EquipoList.ToString() + ", Submitted: "+_submitted;
+            + ", Glasgow Voz: " + _glasgowVoz  + ", Equipo utilizado: " + string.Join(", ", _MedicamentoAmpollaList)+ string.Join(", ", _MedicamentoSueroList) + string.Join(", ", _MedicamentoParoList) 
+            + string.Join(", ", HerramientaEstabilizadorList) + string.Join(", ", HerramientaIntubacionList) + string.Join(", ", HerramientaOxigenoList) + ", Submitted: " +_submitted;
     }
 
-    public static int HistorialListLength()
-    {
-        if (HistorialList != null)
-        {
-            return HistorialList.Count;
-        }
-
-        return 0;
-    }
-
-    public static void createEmpyHistory()
-    {
-        if (HistorialList.Count > 0)
-        {
-            if (HistorialSubmitted() == true)
-            {
-                Historial newHistorial = new Historial((Historial.HistorialListLength() + 1), false);
-                HistorialList.Add(newHistorial);
-            }
-            
-        }
-        else
-        {
-            Historial newHistorial = new Historial((1), false);
-            HistorialList.Add(newHistorial);
-        }
-    }
-
-    public static void deleteCurentHistory()
-    {
-        foreach (Historial item in HistorialList)
-        {
-            if (item.Id == HistorialListLength())
-            {
-                HistorialList.Remove(item);
-                //MSJ: Debe completar o descartar el formulario actual antes de crear otro.
-
-            }
-        }
-
-    }
-
-    public static Boolean HistorialSubmitted()
-    {
-        foreach (Historial item in HistorialList)
-            {
-                if (item.Id == HistorialListLength())
-                {
-                    if (item.Submitted == true)
-                    {
-                        return true;
-                    }
-                }
-            }
-        return false; 
-    }
-
+   
 }

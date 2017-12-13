@@ -4,22 +4,65 @@ using System.Linq;
 using System.Web;
 
 /// <summary>
-/// Summary description for Equipo
+/// Summary description for Atencion
 /// </summary>
-public class Equipo : Atencion
+public class Equipo
 {
 
+    private string _Categoria;
+    private string _Tipo;
+    private string _Nombre;
+    private int _Cant;
+ 
 
-    public Equipo(
-        string pCategoria, string pTipo, 
-        string pNombre, int pCant)
-        :base( 
-            pCategoria,  pTipo,  
-            pNombre,  pCant)
+    public Equipo(string pNombre, int pCant)
     {
+        Nombre = pNombre;
+        Cant = pCant;
         
     }
 
-  
+    public Equipo()
+    {
+        
+
+    }
+
+    public string Categoria
+    {  get{return _Categoria; } set{ _Categoria = value;} }
+
+    public string Tipo
+    { get { return _Tipo; } set { _Tipo = value; } }
+
+    public string Nombre
+    { get { return _Nombre; } set { _Nombre = value; } }
+
+    public int Cant
+    { get { return _Cant; } set { _Cant = value; } }
+
+    public override string ToString()
+    {
+        return "Tipo: "+_Tipo+ ", Categoria: " + _Categoria + ", Nombre: " +_Nombre+", Cantidad: "+_Cant+"";
+    }
+
+    public virtual void TipoEquipo()
+    {
+
+    }
+
+    public virtual void CategoriaEquipo()
+    {
+
+    }
+
+    public virtual void agregarEquipo(string nombreEquipo, int cantidadEquipo)
+    {
+
+    }
+
+    public virtual void descartarEquipo()
+    {
+
+    }
 
 }

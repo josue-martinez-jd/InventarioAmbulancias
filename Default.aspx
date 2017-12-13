@@ -378,7 +378,7 @@
             <asp:Button ID="btnGuardarBoleta" Text="Guardar Boleta"  runat="server" OnClick="btnGuardarBoleta_Click"/>
         </div>
         <div class="col-xs-6">
-            <asp:Button href="~/" ID="btnDescartarBoleta" Text="Descartar Boleta" runat="server"/>
+            <asp:Button href="~/" ID="btnDescartarBoleta" Text="Descartar Boleta" runat="server" OnClick="btnDescartarBoleta_Click1"/>
         </div>
     </div>
 
