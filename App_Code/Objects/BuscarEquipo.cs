@@ -12,6 +12,7 @@ public class BuscarEquipo:Buscar
     {
     }
 
+    //Polimorfismo
     public override string encuentra(string tipo)
     {
         string EquipoEncontrado = "";

@@ -8,10 +8,10 @@
                  Tipo: <asp:DropDownList ID="drpInventarioTipo" class="dropdowns" style="width:70%" runat="server"></asp:DropDownList>
             </div>
             <div class="col-xs-1">
-                 <asp:Button ID="btnBuscarInventario" class="buttons" Text="Buscar Inventario" runat="server"/>
+                 <asp:Button ID="btnBuscarInventario" class="buttons" Text="Buscar Inventario" runat="server" OnClick="btnBuscarInventario_Click"/>
             </div>
             <div class="col-xs-1">
-                 <asp:Button ID="btnBuscarTodoInventario" class="buttons" Text="Mostrar Todo" style="margin-left:-55%;" runat="server"/>
+                 <asp:Button ID="btnBuscarTodoInventario" class="buttons" Text="Mostrar Todo" style="margin-left:-55%;" runat="server" OnClick="btnBuscarTodoInventario_Click"/>
             </div>
         </div>
         <br />

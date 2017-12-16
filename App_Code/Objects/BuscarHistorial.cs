@@ -12,6 +12,7 @@ public class BuscarHistorial : Buscar
     {
     }
 
+    //Polimorfismo
     public override string encuentra(string cedula)
     {
         string historialString = "No existe";

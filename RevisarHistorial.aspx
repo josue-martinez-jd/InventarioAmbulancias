@@ -8,7 +8,7 @@
              Ingrese Cedula Paciente: <asp:TextBox ID="txtCedula" class="textboxes" type="number" style="width:70%" runat="server"></asp:TextBox>
         </div>
         <div class="col-lg-5">
-             <asp:Button ID="btnBuscarHistorial" class="buttons" Text="Buscar Historial" runat="server"/>
+             <asp:Button ID="btnBuscarHistorial" class="buttons" Text="Buscar Historial" runat="server" OnClick="btnBuscarHistorial_Click"/>
         </div>
     </div>
     <br />
