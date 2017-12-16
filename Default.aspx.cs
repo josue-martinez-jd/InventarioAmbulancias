@@ -14,12 +14,12 @@ public partial class _Default : Page
         historial.createEmpyHistory();
 
         if (!IsPostBack) {
-            drpNombreEquipo.Items.Add("Cojin lateral");
-            drpNombreEquipo.Items.Add("Mangos con bateria");
-            drpNombreEquipo.Items.Add("Cuello de carton");
-            drpNombreEquipo.Items.Add("Hola articulada");
-            drpNombreEquipo.Items.Add("Mangeras de alta presion");
-            drpNombreEquipo.Items.Add("Mascarilla");
+            drpNombreHerramienta.Items.Add("Cojin lateral");
+            drpNombreHerramienta.Items.Add("Mangos con bateria");
+            drpNombreHerramienta.Items.Add("Cuello de carton");
+            drpNombreHerramienta.Items.Add("Hola articulada");
+            drpNombreHerramienta.Items.Add("Mangeras de alta presion");
+            drpNombreHerramienta.Items.Add("Mascarilla");
             drpNombreMedicamento.Items.Add("buscapina");
             drpNombreMedicamento.Items.Add("voltaren");
             drpNombreMedicamento.Items.Add("Suero dextrosa50% 50ml");
@@ -81,7 +81,7 @@ public partial class _Default : Page
         catch (Exception h) { lblTestHistorial.Text = "Error al agregar Medicamento"; }
     }
 
-    protected void btnAgregarEquipo_Click(object sender, EventArgs e)
+    protected void btnAgregarHerramienta_Click(object sender, EventArgs e)
     {
         try
         {
@@ -89,9 +89,9 @@ public partial class _Default : Page
             HerramientaIntubacion herramientaIntubacion = new HerramientaIntubacion();
             HerramientaOxigeno herramientaOxigeno = new HerramientaOxigeno();
 
-            herramientaEstabilizador.agregarEquipo(drpNombreEquipo.SelectedItem.Text, Int32.Parse(txtCantidadEquipo.Text));
-            herramientaIntubacion.agregarEquipo(drpNombreEquipo.SelectedItem.Text, Int32.Parse(txtCantidadEquipo.Text));
-            herramientaOxigeno.agregarEquipo(drpNombreEquipo.SelectedItem.Text, Int32.Parse(txtCantidadEquipo.Text));
+            herramientaEstabilizador.agregarEquipo(drpNombreHerramienta.SelectedItem.Text, Int32.Parse(txtCantidadHerramienta.Text));
+            herramientaIntubacion.agregarEquipo(drpNombreHerramienta.SelectedItem.Text, Int32.Parse(txtCantidadHerramienta.Text));
+            herramientaOxigeno.agregarEquipo(drpNombreHerramienta.SelectedItem.Text, Int32.Parse(txtCantidadHerramienta.Text));
 
             lblTestHistorial.Text = "Herramienta agregada con exito";
         }
@@ -232,21 +232,15 @@ public partial class _Default : Page
     public void clearForm()
     {
         clearTextbox(txtMedico);
-        clearTextbox(txtGlicemia);
         clearTextbox(txtAlergias);
         clearTextbox(txtBase);
-        clearTextbox(txtCantidadEquipo);
+        clearTextbox(txtCantidadHerramienta);
         clearTextbox(txtCantidadMedicamento);
         clearTextbox(txtCedula);
         clearTextbox(txtEdad);
-        clearTextbox(txtFC);
-        clearTextbox(txtFR);
         clearTextbox(txtNombrePaciente);
         clearTextbox(txtOtrosAPP);
-        clearTextbox(txtPA);
         clearTextbox(txtParamedico);
-        clearTextbox(txtSatO2);
-        clearTextbox(txtTemp);
         clearTextbox(txtTratamiento);
         clearTextbox(txtUnidad);
         clearCheckbox(chkAlergias);
@@ -271,7 +265,6 @@ public partial class _Default : Page
         clearCheckbox(chkNoDeficitMotor);
         clearCheckbox(chkNoDeficitSensitivo);
         clearCheckbox(chkNoIngurgitacion);
-        clearCheckbox(chkNoReactiva);
         clearCheckbox(chkNormal);
         clearCheckbox(chkNoTratamiento);
         clearCheckbox(chkOcular);

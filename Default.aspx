@@ -154,29 +154,6 @@
     <br />
     <div class="row">
     <div class="col-xs-6">
-        <h3 class="SignosVitales_ExamenFisico" >Signos Vitales</h3>
-           <asp:Panel ID="SignosVitales" class="borders" runat="server">
-        <div class="row"> 
-                <div class="col-xs-2">PA
-                    <asp:TextBox type="number" class="textBoxes" ID="txtPA" runat="server"></asp:TextBox>
-                </div>
-                <div class="col-xs-2">FC
-                    <asp:TextBox type="number" class="textBoxes" ID="txtFC" runat="server"></asp:TextBox>
-                </div>
-                <div class="col-xs-2">FR
-                    <asp:TextBox type="number" class="textBoxes" ID="txtFR" runat="server"></asp:TextBox>
-                </div>
-                <div class="col-xs-2">Sat.O2
-                    <asp:TextBox type="number" class="textBoxes" ID="txtSatO2" runat="server"></asp:TextBox>
-                </div>
-                <div class="col-xs-2">Glicemia
-                    <asp:TextBox type="number" class="textBoxes" ID="txtGlicemia" runat="server"></asp:TextBox>
-                </div>
-                <div class="col-xs-2">Temp
-                    <asp:TextBox type="number" class="textBoxes" ID="txtTemp" runat="server"></asp:TextBox>
-                </div>
-        </div>
-               </asp:Panel>
         <h3 class="SignosVitales_ExamenFisico" >Historia Clinica</h3>
            <asp:Panel ID="HistoriaClinica" class="borders" runat="server">
               <div class="row" >
@@ -199,12 +176,12 @@
         </div>
             <div class="col-xs-2">
             <asp:Label AssociatedControlID="chkNoDeficitMotor" runat="server">
-                <asp:CheckBox ID="chkNoDeficitMotor" runat="server"/>No deficit motor
+                <asp:CheckBox ID="chkNoDeficitMotor" runat="server"/>Deficit motor
             </asp:Label>
         </div>
             <div class="col-xs-2">
             <asp:Label AssociatedControlID="chkNoDeficitSensitivo" runat="server">
-                <asp:CheckBox ID="chkNoDeficitSensitivo" runat="server"/>No deficit sensitivo
+                <asp:CheckBox ID="chkNoDeficitSensitivo" runat="server"/>Deficit sensitivo
             </asp:Label>
         </div>
             <div class="col-xs-2">
@@ -257,11 +234,6 @@
                 </asp:Label>
             </div>
             <div class="col-xs-2 lighter">
-                <asp:Label AssociatedControlID="chkNoReactiva" runat="server">
-                    <asp:CheckBox ID="chkNoReactiva" runat="server"/>No Reactiva
-                </asp:Label>
-            </div>
-            <div class="col-xs-2 lighter">
                 <asp:Label AssociatedControlID="chkNinguno" runat="server">
                     <asp:CheckBox ID="chkNinguno" runat="server"/>Ninguno
                 </asp:Label>
@@ -301,7 +273,7 @@
             </div>
             <div class="col-xs-2">
                 <asp:Label AssociatedControlID="chkNoIngurgitacion" runat="server">
-                    <asp:CheckBox ID="chkNoIngurgitacion" runat="server"/>No ingurgitacion
+                    <asp:CheckBox ID="chkNoIngurgitacion" runat="server"/>Ingurgitacion
                 </asp:Label>
             </div>
             <div class="col-xs-2">
@@ -323,20 +295,12 @@
     
     <br />
 
-        <h3>MEDICAMENTOS/EQUIPO UTILIZADOS</h3>
+        <h3>EQUIPOS UTILIZADOS</h3>
     <asp:Panel ID="Medicamento_Equipo" runat="server">
     <div class ="row text-style">
         <div class="col-xs-6">
             <h3 class="SignosVitales_ExamenFisico">Medicamentos</h3>
             <asp:Panel ID="MedicamentosUtilizados" class="borders" runat="server">
-                <div class ="row">
-                    <div class="col-xs-7">
-                        Categoria:<asp:DropDownList ID="drpCategoriaMedicamento" class="dropdowns" runat="server"></asp:DropDownList>
-                    </div> 
-                     <div class="col-xs-7">
-                        Tipo:<asp:DropDownList ID="drpTipoMedicamento" class="dropdowns" runat="server"></asp:DropDownList>
-                    </div> 
-                </div>
                 <div class="row">
                     <div class="col-xs-2" style="width:40%;" >
                          Nombre:<asp:DropDownList ID="drpNombreMedicamento" class="dropdowns" runat="server"></asp:DropDownList>
@@ -351,25 +315,17 @@
             </asp:Panel>
         </div>
         <div class="col-xs-6">
-            <h3 class="SignosVitales_ExamenFisico">Equipos</h3>
-            <asp:Panel ID="EquipoUtilizado" class="borders" runat="server">
-                 <div class ="row">
-                    <div class="col-xs-7">
-                        Categoria:<asp:DropDownList ID="drpCategoriaEquipo" class="dropdowns" runat="server"></asp:DropDownList>
-                    </div> 
-                     <div class="col-xs-7">
-                        Tipo:<asp:DropDownList ID="drpTipoEquipo" class="dropdowns" runat="server"></asp:DropDownList>
-                    </div> 
-                </div>
+            <h3 class="SignosVitales_ExamenFisico">Herramientas</h3>
+            <asp:Panel ID="HerramientasUtilizada" class="borders" runat="server">
                 <div class="row">
                     <div class="col-xs-2" style="width:40%;" >
-                         Nombre:<asp:DropDownList ID="drpNombreEquipo" class="dropdowns" runat="server"></asp:DropDownList>
+                         Nombre:<asp:DropDownList ID="drpNombreHerramienta" class="dropdowns" runat="server"></asp:DropDownList>
                     </div>
                     <div class="col-xs-2">
-                         Cantidad:<asp:TextBox ID="txtCantidadEquipo" class="textBoxes" type="number" runat="server"></asp:TextBox>
+                         Cantidad:<asp:TextBox ID="txtCantidadHerramienta" class="textBoxes" type="number" runat="server"></asp:TextBox>
                     </div>
                      <div class="col-xs-2">
-                         <asp:Button ID="btnAgregarEquipo" class="buttons" Text="Agregar"   runat="server" OnClick="btnAgregarEquipo_Click"/>
+                         <asp:Button ID="btnAgregarHerramienta" class="buttons" Text="Agregar"   runat="server" OnClick="btnAgregarHerramienta_Click"/>
                     </div>
                 </div> 
             </asp:Panel>
