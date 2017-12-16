@@ -11,4 +11,11 @@ public partial class RevisarHistorial : Page
     {
 
     }
+
+    protected void btnBuscarHistorial_Click(object sender, EventArgs e)
+    {
+        BuscarHistorial historial = new BuscarHistorial();
+        txaHistorial.Value = historial.encuentra(txtCedula.Text);
+
+    }
 }
