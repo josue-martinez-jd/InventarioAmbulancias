@@ -43,112 +43,71 @@
         <h3 >DATOS DEL PACIENTE</h3>
 
     <asp:Panel ID="InformacionPaciente" runat="server">
-        <asp:Panel ID="PacienteNombreTratamiento" runat="server">
-        <div class="row" >
-        <div class="col-md-2" >
-         <p > &nbsp;Nombre Completo: </p>
-        </div>
-         <div class="col-md-2">
-             <asp:TextBox class="textBoxes" ID="txtNombrePaciente" runat="server"  ></asp:TextBox>
-         </div>
-
-        <div class="col-md-2" style="margin-left: 2cm;" >
-         <p> &nbsp;Tratamiento: </p>
-        </div>
-         <div class="col-md-2">
-             <asp:TextBox class="textBoxes" ID="txtTratamiento" runat="server" ></asp:TextBox>
-         </div>
-
-         <div class="col-md-2" style="margin-left: 2cm;">
-             <asp:Label runat="server" style="color:red;width:200px" AssociatedControlID="chkNoTratamiento"> <asp:CheckBox ID="chkNoTratamiento" runat="server" /> No Tratamiento</asp:Label>
-        </div>
-    </div>
-    </asp:Panel>
-    
-
-    <asp:Panel ID="EdadSexoPaciente" runat="server">
-         <div class="row" >
-        <div class="col-md-2"  >
-            <p > &nbsp;Edad: </p>
-        </div>
-
-        <div class="col-md-2"  >
-             <asp:TextBox class="textBoxes" ID="txtEdad"  style="width: 50px;" runat="server"  ></asp:TextBox>
-        </div>
-
-        <div class="col-md-2" style="margin-left: -0.3cm;" >
-            <p > &nbsp;Sexo: </p>
-        </div>
-
-        <div class="col-md-2" style="width: 160px;">
-            <asp:Label runat="server" AssociatedControlID="chkMujer" OnCheckedChanged="chkMujer_CheckedChanged">
-                <asp:CheckBox ID="chkMujer" runat="server"/>&nbsp;Mujer</asp:Label> 
-            <asp:Label runat="server" AssociatedControlID="chkHombre" OnCheckedChanged="chkHombre_CheckedChanged">
-                <asp:CheckBox ID="chkHombre" runat="server"/>&nbsp;Hombre</asp:Label> 
-        </div>
-
-        <div class="col-md-2"  style="width:87px;margin-left: -1cm;">
-            <p > &nbsp;Cedula: </p>
-        </div>
-
-        <div class="col-md-2" >
-             <asp:TextBox class="textBoxes" ID="txtCedula" runat="server"  style="width: 150px; margin-left: -0.6cm;"></asp:TextBox>
-        </div>
-
-        <div class="col-md-2" style="margin-left: 2.5cm;" >
-         <p> &nbsp;Alergias: </p>
-        </div>
-         <div class="col-md-2" style=" margin-left: 1.5cm;">
-             <asp:TextBox class="textBoxes" ID="txtAlergias" style="width: 300px;" runat="server" ></asp:TextBox>
-         </div>
-
-         <div class="col-md-2" style="    margin-left: 6.5cm; width: 200px;">
-             <asp:Label runat="server" AssociatedControlID="chkAlergias" style="color:red">
-             <asp:CheckBox ID="chkAlergias" runat="server"/>&nbsp;No Alergias</asp:Label> 
-        </div>
-
-    </div>
-
-        <div class="row" >
-        <div class="col-md-2">
-            <p > &nbsp;APP: </p>
-        </div>
-
-        <asp:Panel ID="APPCheckboxes" runat="server">
-            <div class="col-md-2" style="width: 550px;" >
-                <asp:Label runat="server" AssociatedControlID="chkDMelitus" >
-                <asp:CheckBox ID="chkDMelitus" runat="server"/>D.Melitus</asp:Label> 
-                &nbsp;&nbsp;&nbsp;
-                <asp:Label runat="server" AssociatedControlID="chkHTA" >
-                <asp:CheckBox ID="chkHTA" runat="server"/>HTA</asp:Label> 
-                &nbsp;&nbsp;&nbsp;
-                <asp:Label runat="server" AssociatedControlID="chkIAM" >
-                <asp:CheckBox ID="chkIAM" runat="server"/>IAM</asp:Label> 
-                &nbsp;&nbsp;&nbsp
-                <asp:Label runat="server" AssociatedControlID="chkAsma" >
-                <asp:CheckBox ID="chkAsma" runat="server"/>Asma</asp:Label> 
-                &nbsp;&nbsp;&nbsp;
-                 <asp:Label runat="server" AssociatedControlID="chkICC" >
-                <asp:CheckBox ID="chkICC" runat="server"/>ICC</asp:Label> 
-                &nbsp;&nbsp;&nbsp;
-                <asp:Label runat="server" AssociatedControlID="chkTiroidea" >
-                <asp:CheckBox ID="chkTiroidea" runat="server"/>Enf.Tiroidea</asp:Label> 
-                &nbsp;&nbsp;&nbsp;
-                <asp:Label runat="server" style="color:red" AssociatedControlID="chkNoAPP" >
-                <asp:CheckBox ID="chkNoAPP" runat="server"/>No APP</asp:Label> 
+    <asp:Panel ID="PacienteNombreTratamiento" runat="server">
+        <div class="row text-style" >
+            <div class="col-xs-4" >Nombre Completo:
+                <asp:TextBox class="textBoxes" ID="txtNombrePaciente" runat="server"  ></asp:TextBox>
             </div>
-        </asp:Panel>
-       
-        <div class="col-md-2" style="margin-left: -1.1cm;">
-            <p > &nbsp;Otros: </p>
+            <div class="col-xs-4" >Tratamiento:
+                <asp:TextBox class="textBoxes" ID="txtTratamiento" runat="server" ></asp:TextBox>
+            </div>
+             <div class="col-xs-4">
+                 <asp:Label runat="server" style="color:red;width:200px" AssociatedControlID="chkNoTratamiento"> <asp:CheckBox ID="chkNoTratamiento" runat="server" /> No Tratamiento</asp:Label>
+            </div>
         </div>
-
-        <div class="col-md-2" style="width:500px;" >
-            <asp:TextBox class="textBoxes" ID="txtOtrosAPP" runat="server"  style="width: 500px; margin-left: 0.3cm;"></asp:TextBox>
+    </asp:Panel>
+        <br />
+    <asp:Panel ID="EdadSexoPaciente" runat="server">
+        <div class="row text-style" >
+            <div class="col-xs-4"  >Edad:
+                <asp:TextBox class="textBoxes" ID="txtEdad" type="number"  runat="server"  ></asp:TextBox>
+            </div>
+            <div class="col-xs-4 wide"" >Sexo: 
+                <asp:Label runat="server" AssociatedControlID="chkMujer" OnCheckedChanged="chkMujer_CheckedChanged">
+                    <asp:CheckBox ID="chkMujer" runat="server"/>&nbsp;Mujer</asp:Label> 
+                <asp:Label runat="server" AssociatedControlID="chkHombre" OnCheckedChanged="chkHombre_CheckedChanged">
+                    <asp:CheckBox ID="chkHombre" runat="server"/>&nbsp;Hombre</asp:Label> 
+            </div>
+            <div class="col-xs-4 wide">Cedula:
+                 <asp:TextBox class="textBoxes" ID="txtCedula" type="number" runat="server"></asp:TextBox>
+            </div>
+            <div class="col-xs-4 wide" >Alergias:
+                 <asp:TextBox class="textBoxes" ID="txtAlergias"  runat="server" ></asp:TextBox>
+            </div>
+            <div class="col-xs-4 wide">
+                 <asp:Label runat="server" AssociatedControlID="chkAlergias" style="color:red">
+                    <asp:CheckBox ID="chkAlergias" runat="server"/>&nbsp;No Alergias</asp:Label> 
+            </div>
         </div>
-
-    </div>
-        </asp:Panel>
+        <br />
+        <div class="row text-style" >
+            <div class="col-xs-5" style="width:55%;">APP:
+                <asp:Label runat="server" AssociatedControlID="chkDMelitus" >
+                    <asp:CheckBox ID="chkDMelitus" runat="server"/>D.Melitus</asp:Label> 
+                    &nbsp;&nbsp;&nbsp;
+                <asp:Label runat="server" AssociatedControlID="chkHTA" >
+                    <asp:CheckBox ID="chkHTA" runat="server"/>HTA</asp:Label> 
+                    &nbsp;&nbsp;&nbsp;
+                <asp:Label runat="server" AssociatedControlID="chkIAM" >
+                    <asp:CheckBox ID="chkIAM" runat="server"/>IAM</asp:Label> 
+                    &nbsp;&nbsp;&nbsp
+                <asp:Label runat="server" AssociatedControlID="chkAsma" >
+                    <asp:CheckBox ID="chkAsma" runat="server"/>Asma</asp:Label> 
+                    &nbsp;&nbsp;&nbsp;
+                <asp:Label runat="server" AssociatedControlID="chkICC" >
+                    <asp:CheckBox ID="chkICC" runat="server"/>ICC</asp:Label> 
+                    &nbsp;&nbsp;&nbsp;
+                <asp:Label runat="server" AssociatedControlID="chkTiroidea" >
+                    <asp:CheckBox ID="chkTiroidea" runat="server"/>Enf.Tiroidea</asp:Label> 
+                    &nbsp;&nbsp;&nbsp;
+                <asp:Label runat="server" style="color:red" AssociatedControlID="chkNoAPP" >
+                    <asp:CheckBox ID="chkNoAPP" runat="server"/>No APP</asp:Label> 
+            </div>
+            <div class="col-xs-5" >Otros: 
+            <asp:TextBox class="textBoxes" ID="txtOtrosAPP" runat="server"></asp:TextBox>
+        </div>
+        </div>
+    </asp:Panel>
     </asp:Panel>
 
     <br />
