@@ -14,12 +14,14 @@ public partial class _Default : Page
         historial.createEmpyHistory();
 
         if (!IsPostBack) {
+            drpNombreHerramienta.Items.Add("");
             drpNombreHerramienta.Items.Add("Cojin lateral");
             drpNombreHerramienta.Items.Add("Mangos con bateria");
             drpNombreHerramienta.Items.Add("Cuello de carton");
             drpNombreHerramienta.Items.Add("Hola articulada");
             drpNombreHerramienta.Items.Add("Mangueras de alta presion");
             drpNombreHerramienta.Items.Add("Mascarilla");
+            drpNombreMedicamento.Items.Add("");
             drpNombreMedicamento.Items.Add("buscapina");
             drpNombreMedicamento.Items.Add("voltaren");
             drpNombreMedicamento.Items.Add("Suero dextrosa50% 50ml");
@@ -38,34 +40,7 @@ public partial class _Default : Page
 
     //--------------------------------------------Guarda la Boleta---------------------------------------------
     protected void btnGuardarBoleta_Click(object sender, EventArgs e)
-    {
-            setForm();
-            clearForm();
-    }
-
-    //-------------------------------------------Descartar la Boleta-------------------------------------------
-    protected void btnDescartarBoleta_Click1(object sender, EventArgs e)
-    {
-        try
-        {
-            MedicamentoAmpolla medicamentoAmpolla = new MedicamentoAmpolla();
-            MedicamentoParo medicamentoParo = new MedicamentoParo();
-            MedicamentoSuero medicamentoSuero = new MedicamentoSuero();
-            HerramientaEstabilizador herramientaEstabilizador = new HerramientaEstabilizador();
-            HerramientaIntubacion herramientaIntubacion = new HerramientaIntubacion();
-            HerramientaOxigeno herramientaOxigeno = new HerramientaOxigeno();
-            medicamentoAmpolla.descartarEquipo();
-            medicamentoParo.descartarEquipo();
-            medicamentoSuero.descartarEquipo();
-            herramientaEstabilizador.descartarEquipo();
-            herramientaIntubacion.descartarEquipo();
-            herramientaOxigeno.descartarEquipo();
-
-            this.clearForm();
-            lblTestHistorial.Text = "Boleta descartada con exito";
-        }
-        catch (Exception h) { lblTestHistorial.Text = "Error al descartar la boleta"; }
-    }
+    { setForm(); }
 
     //------------------------------------Agrega Medicamentos y Equipo al Historial------------------------------------
     protected void btnAgregarMedicamento_Click(object sender, EventArgs e)
@@ -76,7 +51,7 @@ public partial class _Default : Page
             MedicamentoParo medicamentoParo = new MedicamentoParo();
             MedicamentoSuero medicamentoSuero = new MedicamentoSuero();
 
-            if(medicamentoAmpolla.Cant> Int32.Parse(txtCantidadMedicamento.Text) && medicamentoParo.Cant> Int32.Parse(txtCantidadMedicamento.Text)&& medicamentoSuero.Cant> Int32.Parse(txtCantidadMedicamento.Text))
+            if(validaCantidadEquipo()==true)
             {
                 medicamentoAmpolla.agregarEquipo(drpNombreMedicamento.SelectedItem.Text, Int32.Parse(txtCantidadMedicamento.Text));
                 medicamentoParo.agregarEquipo(drpNombreMedicamento.SelectedItem.Text, Int32.Parse(txtCantidadMedicamento.Text));
@@ -87,7 +62,7 @@ public partial class _Default : Page
             {
                 lblTestHistorial.Text = "No quedan suficientes unidades";
             }
-        }
+    }
         catch (Exception h) { lblTestHistorial.Text = "Error al agregar Medicamento"; }
     }
 
@@ -99,7 +74,7 @@ public partial class _Default : Page
             HerramientaIntubacion herramientaIntubacion = new HerramientaIntubacion();
             HerramientaOxigeno herramientaOxigeno = new HerramientaOxigeno();
 
-            if(herramientaEstabilizador.Cant> Int32.Parse(txtCantidadHerramienta.Text)&& herramientaIntubacion.Cant> Int32.Parse(txtCantidadHerramienta.Text)&& herramientaOxigeno.Cant> Int32.Parse(txtCantidadHerramienta.Text))
+            if (validaCantidadEquipo() == true)
             {
                 herramientaEstabilizador.agregarEquipo(drpNombreHerramienta.SelectedItem.Text, Int32.Parse(txtCantidadHerramienta.Text));
                 herramientaIntubacion.agregarEquipo(drpNombreHerramienta.SelectedItem.Text, Int32.Parse(txtCantidadHerramienta.Text));
@@ -185,7 +160,7 @@ public partial class _Default : Page
             {
                 if (item.Id == InicializarInventario.HistorialList.Count)
                 {
-                    if (item.Fecha!="" && item.Medico != ""&& item.Paramedico != ""&& item.Unidad != ""&& item.Base !="" && item.NombrePaciente !="" && item.Edad>0 && item.Cedula>0 && item.HistoriaClinica != "")
+                    if (txtFecha.Text != "" && txtMedico.Text != ""&& txtParamedico.Text != ""&& txtUnidad.Text != ""&& txtBase.Text != "" && txtNombrePaciente.Text != "" && Int32.Parse(txtEdad.Text) > 0 && Int32.Parse(txtCedula.Text) > 0 && txaHistoriaClinica.Value != "")
                     {
                         item.Fecha = txtFecha.Text;
                         item.Medico = txtMedico.Text;
@@ -223,6 +198,7 @@ public partial class _Default : Page
                         item.Submitted = true;
 
                         lblTestHistorial.Text = "Boleta guardada con exito";
+                        clearForm();
                     }
                     else
                     {
@@ -298,6 +274,90 @@ public partial class _Default : Page
         clearCheckbox(chkTiroidea);
         clearCheckbox(chkVoz);
         clearCheckbox(ckMembTimpNormal);
+    }
+
+    //--------------------------Valida que se utilicen equipos solo si hay en el inventario---------------------------
+    public Boolean validaCantidadEquipo()
+    {
+        switch (drpNombreHerramienta.SelectedItem.Text)
+        {
+            case "Cojin lateral":
+                if (InicializarInventario.InventarioHerramientaEstabilizador[0].Cant >= Int32.Parse(txtCantidadHerramienta.Text))
+                {
+                    return true;
+                }
+                break;
+            case "Mangos con bateria":
+                if (InicializarInventario.InventarioHerramientaIntubacion[1].Cant >= Int32.Parse(txtCantidadHerramienta.Text))
+                {
+                    return true;
+                }
+                break;
+            case "Cuello de carton":
+                if (InicializarInventario.InventarioHerramientaEstabilizador[1].Cant >= Int32.Parse(txtCantidadHerramienta.Text))
+                {
+                    return true;
+                }
+                break;
+            case "Hola articulada":
+                if (InicializarInventario.InventarioHerramientaIntubacion[0].Cant >= Int32.Parse(txtCantidadHerramienta.Text))
+                {
+                    return true;
+                }
+                break;
+            case "Mangueras de alta presion":
+                if (InicializarInventario.InventarioHerramientaOxigeno[0].Cant >= Int32.Parse(txtCantidadHerramienta.Text))
+                {
+                    return true;
+                }
+                break;
+            case "Mascarilla":
+                if (InicializarInventario.InventarioHerramientaOxigeno[1].Cant >= Int32.Parse(txtCantidadHerramienta.Text))
+                {
+                    return true;
+                }
+                break;
+        }
+        switch (drpNombreMedicamento.SelectedItem.Text)
+        {
+            case "buscapina":
+                if (InicializarInventario.InventarioMedicamentoAmpolla[0].Cant >= Int32.Parse(txtCantidadMedicamento.Text))
+                {
+                    return true;
+                }
+                break;
+            case "voltaren":
+                if (InicializarInventario.InventarioMedicamentoAmpolla[1].Cant >= Int32.Parse(txtCantidadMedicamento.Text))
+                {
+                    return true;
+                }
+                break;
+            case "Suero dextrosa50% 50ml":
+                if (InicializarInventario.InventarioMedicamentoSuero[0].Cant >= Int32.Parse(txtCantidadMedicamento.Text))
+                {
+                    return true;
+                }
+                break;
+            case "Suero Fisiologico 100ml":
+                if (InicializarInventario.InventarioMedicamentoSuero[1].Cant >= Int32.Parse(txtCantidadMedicamento.Text))
+                {
+                    return true;
+                }
+                break;
+            case "Epinefrina":
+                if (InicializarInventario.InventarioMedicamentoParo[0].Cant >= Int32.Parse(txtCantidadMedicamento.Text))
+                {
+                    return true;
+                }
+                break;
+            case "Artropina":
+                if (InicializarInventario.InventarioMedicamentoParo[1].Cant >= Int32.Parse(txtCantidadMedicamento.Text))
+                {
+                    return true;
+                }
+                break;
+        }
+        return false;
     }
 }
 

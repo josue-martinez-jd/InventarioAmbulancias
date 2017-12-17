@@ -30,24 +30,19 @@ public class HerramientaEstabilizador : Equipo
                 {
                     if (med.Nombre == nombreEquipo)
                     {
-                        int cantMedicamentoMax = med.Cant;
-                        med.Cant = cantidadEquipo;
+                        med.Cant = med.Cant - cantidadEquipo;
                         item.HerramientaEstabilizadorList.Add(med);
 
-                        if(med.Cant== cantidadEquipo)
-                        { med.Cant = cantMedicamentoMax - cantidadEquipo; }
+                        foreach(HerramientaEstabilizador herr in item.HerramientaEstabilizadorList)
+                        {
+                            if (herr == med)
+                            {
+                                herr.Cant = cantidadEquipo;
+                            }
+                        }
                     }
                 }
             }
-        }
-    }
-
-    public override void descartarEquipo()
-    {
-        foreach (Historial item in InicializarInventario.HistorialList)
-        {
-            if (item.Id == InicializarInventario.HistorialList.Count)
-            { item.HerramientaEstabilizadorList.Clear(); }
         }
     }
 }

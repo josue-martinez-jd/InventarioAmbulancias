@@ -50,6 +50,4 @@ public class Equipo
     public virtual void CategoriaEquipo() { }
 
     public virtual void agregarEquipo(string nombreEquipo, int cantidadEquipo) { }
-
-    public virtual void descartarEquipo() { }
 }
