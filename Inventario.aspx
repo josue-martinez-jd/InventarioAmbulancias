@@ -20,6 +20,12 @@
                  <textarea ID="txaHistorial" runat="server"></textarea>
             </div>
         </div>
+        <br />
+        <div class="row">
+             <div class="col-xs-1">
+                 <asp:Button ID="btnLlenarInventario" class="buttons" Text="Llenar Inventario" style="margin-left:0.1%" runat="server"/>
+            </div>
+        </div>
     </asp:Panel>
 </asp:Content>
 

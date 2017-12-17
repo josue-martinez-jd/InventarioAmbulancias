@@ -33,7 +33,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
-                            <div class="checkbox">
+                            <div class="checkbox" style="visibility:hidden;">
                                 <asp:CheckBox runat="server" ID="chkRecordar"  />
                                 <asp:Label runat="server" AssociatedControlID="chkRecordar">Recordar Ambulancia?</asp:Label>
                             </div>
@@ -45,11 +45,7 @@
                         </div>
                     </div>
                 </div>
-                <p>
-                    <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">Registrarse</asp:HyperLink>
-                    <br />
-                      Si esta ingresando una nueva ambulancia
-                </p>
+                
             </section>
         </div>
     </div>
