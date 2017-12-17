@@ -41,13 +41,4 @@ public class MedicamentoSuero:Equipo
             }
         }
     }
-
-    public override void descartarEquipo()
-    {
-        foreach (Historial item in InicializarInventario.HistorialList)
-        {
-            if (item.Id == InicializarInventario.HistorialList.Count)
-            { item.MedicamentoSueroList.Clear(); }
-        }
-    }
 }

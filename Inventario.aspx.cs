@@ -37,7 +37,8 @@ public partial class Inventario : System.Web.UI.Page
         try {
             InicializarInventario inventario = new InicializarInventario();
             inventario.LlenarInventario();
-
+            BuscarEquipo equipo = new BuscarEquipo();
+            txaHistorial.Value = equipo.encuentra("all");
         } catch(Exception h) { }
     }
 }
