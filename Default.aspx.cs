@@ -18,7 +18,7 @@ public partial class _Default : Page
             drpNombreHerramienta.Items.Add("Mangos con bateria");
             drpNombreHerramienta.Items.Add("Cuello de carton");
             drpNombreHerramienta.Items.Add("Hola articulada");
-            drpNombreHerramienta.Items.Add("Mangeras de alta presion");
+            drpNombreHerramienta.Items.Add("Mangueras de alta presion");
             drpNombreHerramienta.Items.Add("Mascarilla");
             drpNombreMedicamento.Items.Add("buscapina");
             drpNombreMedicamento.Items.Add("voltaren");
@@ -27,7 +27,12 @@ public partial class _Default : Page
             drpNombreMedicamento.Items.Add("Epinefrina");
             drpNombreMedicamento.Items.Add("Artropina");
             InicializarInventario inicializar = new InicializarInventario();
-            inicializar.crearInventario();
+            if (InicializarInventario.inicializado == false)
+            {
+                inicializar.crearInventario();
+                InicializarInventario.inicializado = true;
+            }
+            
         }
     }
 
@@ -39,7 +44,6 @@ public partial class _Default : Page
     }
 
     //-------------------------------------------Descartar la Boleta-------------------------------------------
-    
     protected void btnDescartarBoleta_Click1(object sender, EventArgs e)
     {
         try
@@ -50,7 +54,6 @@ public partial class _Default : Page
             HerramientaEstabilizador herramientaEstabilizador = new HerramientaEstabilizador();
             HerramientaIntubacion herramientaIntubacion = new HerramientaIntubacion();
             HerramientaOxigeno herramientaOxigeno = new HerramientaOxigeno();
-
             medicamentoAmpolla.descartarEquipo();
             medicamentoParo.descartarEquipo();
             medicamentoSuero.descartarEquipo();
@@ -63,6 +66,7 @@ public partial class _Default : Page
         }
         catch (Exception h) { lblTestHistorial.Text = "Error al descartar la boleta"; }
     }
+
     //------------------------------------Agrega Medicamentos y Equipo al Historial------------------------------------
     protected void btnAgregarMedicamento_Click(object sender, EventArgs e)
     {
@@ -72,11 +76,17 @@ public partial class _Default : Page
             MedicamentoParo medicamentoParo = new MedicamentoParo();
             MedicamentoSuero medicamentoSuero = new MedicamentoSuero();
 
-            medicamentoAmpolla.agregarEquipo(drpNombreMedicamento.SelectedItem.Text, Int32.Parse(txtCantidadMedicamento.Text));
-            medicamentoParo.agregarEquipo(drpNombreMedicamento.SelectedItem.Text, Int32.Parse(txtCantidadMedicamento.Text));
-            medicamentoSuero.agregarEquipo(drpNombreMedicamento.SelectedItem.Text, Int32.Parse(txtCantidadMedicamento.Text));
-
-            lblTestHistorial.Text = "Medicamento agregado con exito";
+            if(medicamentoAmpolla.Cant> Int32.Parse(txtCantidadMedicamento.Text) && medicamentoParo.Cant> Int32.Parse(txtCantidadMedicamento.Text)&& medicamentoSuero.Cant> Int32.Parse(txtCantidadMedicamento.Text))
+            {
+                medicamentoAmpolla.agregarEquipo(drpNombreMedicamento.SelectedItem.Text, Int32.Parse(txtCantidadMedicamento.Text));
+                medicamentoParo.agregarEquipo(drpNombreMedicamento.SelectedItem.Text, Int32.Parse(txtCantidadMedicamento.Text));
+                medicamentoSuero.agregarEquipo(drpNombreMedicamento.SelectedItem.Text, Int32.Parse(txtCantidadMedicamento.Text));
+                lblTestHistorial.Text = "Medicamento agregado con exito";
+            }
+            else
+            {
+                lblTestHistorial.Text = "No quedan suficientes unidades";
+            }
         }
         catch (Exception h) { lblTestHistorial.Text = "Error al agregar Medicamento"; }
     }
@@ -89,11 +99,17 @@ public partial class _Default : Page
             HerramientaIntubacion herramientaIntubacion = new HerramientaIntubacion();
             HerramientaOxigeno herramientaOxigeno = new HerramientaOxigeno();
 
-            herramientaEstabilizador.agregarEquipo(drpNombreHerramienta.SelectedItem.Text, Int32.Parse(txtCantidadHerramienta.Text));
-            herramientaIntubacion.agregarEquipo(drpNombreHerramienta.SelectedItem.Text, Int32.Parse(txtCantidadHerramienta.Text));
-            herramientaOxigeno.agregarEquipo(drpNombreHerramienta.SelectedItem.Text, Int32.Parse(txtCantidadHerramienta.Text));
-
-            lblTestHistorial.Text = "Herramienta agregada con exito";
+            if(herramientaEstabilizador.Cant> Int32.Parse(txtCantidadHerramienta.Text)&& herramientaIntubacion.Cant> Int32.Parse(txtCantidadHerramienta.Text)&& herramientaOxigeno.Cant> Int32.Parse(txtCantidadHerramienta.Text))
+            {
+                herramientaEstabilizador.agregarEquipo(drpNombreHerramienta.SelectedItem.Text, Int32.Parse(txtCantidadHerramienta.Text));
+                herramientaIntubacion.agregarEquipo(drpNombreHerramienta.SelectedItem.Text, Int32.Parse(txtCantidadHerramienta.Text));
+                herramientaOxigeno.agregarEquipo(drpNombreHerramienta.SelectedItem.Text, Int32.Parse(txtCantidadHerramienta.Text));
+                lblTestHistorial.Text = "Herramienta agregada con exito";
+            }
+            else
+            {
+                lblTestHistorial.Text = "No quedan suficientes unidades";
+            }
         }
         catch (Exception h) { lblTestHistorial.Text = "Error al agregar Herramienta"; }
     }
@@ -169,42 +185,49 @@ public partial class _Default : Page
             {
                 if (item.Id == InicializarInventario.HistorialList.Count)
                 {
-                    item.Fecha = "01/01/2017";
-                    item.Medico = txtMedico.Text;
-                    item.Paramedico = txtParamedico.Text;
-                    item.Unidad = txtUnidad.Text;
-                    item.Base = txtBase.Text;
-                    item.NombrePaciente = txtNombrePaciente.Text;
-                    item.Edad = Int32.Parse(txtEdad.Text);
-                    item.Cedula = Int32.Parse(txtCedula.Text);
-                    item.HistoriaClinica = txaHistoriaClinica.Value;
-                    item.App = this.returnApp();
-                    item.Tratamiento = this.returnTextOrChecked(chkNoTratamiento, txtTratamiento);
-                    item.Alergia = this.returnTextOrChecked(chkAlergias, txtAlergias);
-                    item.Consciente = this.returnChecked(chkConsciente);
-                    item.Orientado = this.returnChecked(chkOrientado);
-                    item.DeficitMotor = this.returnChecked(chkNoDeficitMotor);
-                    item.DeficitSensitivo = this.returnChecked(chkNoDeficitSensitivo);
-                    item.GlasgowNormal = this.returnChecked(chkNormal);
-                    item.GlasgowEspontanea = this.returnChecked(chkEspontanea);
-                    item.GlasgowReactiva = this.returnChecked(chkReactiva);
-                    item.GlasgowNinguno = this.returnChecked(chkNinguno);
-                    item.GlasgowOcular = this.returnChecked(chkOcular);
-                    item.GlasgowMidriasis = this.returnChecked(chkMidriasis);
-                    item.GlasgowDolor = this.returnChecked(chkDolor);
-                    item.GlasgowVoz = this.returnChecked(chkVoz);
-                    item.GlasgowMiosis = this.returnChecked(chkMiosis);
-                    item.FaringeNormal = this.returnChecked(chkFaringeNormal);
-                    item.ConductosAuditNormal = this.returnChecked(chkCondAudiNormal);
-                    item.MembranaTimpNormal = this.returnChecked(ckMembTimpNormal); //frontend, deberia ser chkMembTimpNormal
-                    item.AmigdalasNormal = this.returnChecked(chkAmigdalasNormales);
-                    item.Ingurgitacion = this.returnChecked(chkNoIngurgitacion);
-                    item.LlenadoCap = this.returnChecked(chkLlenadoCapilar);
-                    item.RsCsRs = this.returnChecked(chkRsCsRs);
-                    item.PulsosNormales = this.returnChecked(chkPulsosNormales);
-                    item.Submitted = true;
+                    if (item.Fecha!="" && item.Medico != ""&& item.Paramedico != ""&& item.Unidad != ""&& item.Base !="" && item.NombrePaciente !="" && item.Edad>0 && item.Cedula>0 && item.HistoriaClinica != "")
+                    {
+                        item.Fecha = txtFecha.Text;
+                        item.Medico = txtMedico.Text;
+                        item.Paramedico = txtParamedico.Text;
+                        item.Unidad = txtUnidad.Text;
+                        item.Base = txtBase.Text;
+                        item.NombrePaciente = txtNombrePaciente.Text;
+                        item.Edad = Int32.Parse(txtEdad.Text);
+                        item.Cedula = Int32.Parse(txtCedula.Text);
+                        item.HistoriaClinica = txaHistoriaClinica.Value;
+                        item.App = this.returnApp();
+                        item.Tratamiento = this.returnTextOrChecked(chkNoTratamiento, txtTratamiento);
+                        item.Alergia = this.returnTextOrChecked(chkAlergias, txtAlergias);
+                        item.Consciente = this.returnChecked(chkConsciente);
+                        item.Orientado = this.returnChecked(chkOrientado);
+                        item.DeficitMotor = this.returnChecked(chkNoDeficitMotor);
+                        item.DeficitSensitivo = this.returnChecked(chkNoDeficitSensitivo);
+                        item.GlasgowNormal = this.returnChecked(chkNormal);
+                        item.GlasgowEspontanea = this.returnChecked(chkEspontanea);
+                        item.GlasgowReactiva = this.returnChecked(chkReactiva);
+                        item.GlasgowNinguno = this.returnChecked(chkNinguno);
+                        item.GlasgowOcular = this.returnChecked(chkOcular);
+                        item.GlasgowMidriasis = this.returnChecked(chkMidriasis);
+                        item.GlasgowDolor = this.returnChecked(chkDolor);
+                        item.GlasgowVoz = this.returnChecked(chkVoz);
+                        item.GlasgowMiosis = this.returnChecked(chkMiosis);
+                        item.FaringeNormal = this.returnChecked(chkFaringeNormal);
+                        item.ConductosAuditNormal = this.returnChecked(chkCondAudiNormal);
+                        item.MembranaTimpNormal = this.returnChecked(ckMembTimpNormal); //frontend, deberia ser chkMembTimpNormal
+                        item.AmigdalasNormal = this.returnChecked(chkAmigdalasNormales);
+                        item.Ingurgitacion = this.returnChecked(chkNoIngurgitacion);
+                        item.LlenadoCap = this.returnChecked(chkLlenadoCapilar);
+                        item.RsCsRs = this.returnChecked(chkRsCsRs);
+                        item.PulsosNormales = this.returnChecked(chkPulsosNormales);
+                        item.Submitted = true;
 
-                    lblTestHistorial.Text = "Boleta guardada con exito";
+                        lblTestHistorial.Text = "Boleta guardada con exito";
+                    }
+                    else
+                    {
+                        lblTestHistorial.Text = "No se aceptan campos vacios o numeros menores a cero";
+                    }
                 }
             }
         }

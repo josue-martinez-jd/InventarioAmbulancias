@@ -13,20 +13,31 @@ public partial class Inventario : System.Web.UI.Page
         {
             drpInventarioTipo.Items.Add("Medicamento");
             drpInventarioTipo.Items.Add("Herramienta");
-
         }
     }
 
     protected void btnBuscarInventario_Click(object sender, EventArgs e)
     {
-        BuscarEquipo equipo = new BuscarEquipo();
-        txaHistorial.Value= equipo.encuentra(drpInventarioTipo.SelectedItem.Text);
-
+        try {
+            BuscarEquipo equipo = new BuscarEquipo();
+            txaHistorial.Value = equipo.encuentra(drpInventarioTipo.SelectedItem.Text);
+        } catch(Exception h) { }
     }
 
     protected void btnBuscarTodoInventario_Click(object sender, EventArgs e)
     {
-        BuscarEquipo equipo = new BuscarEquipo();
-        txaHistorial.Value = equipo.encuentra("all");
+        try {
+            BuscarEquipo equipo = new BuscarEquipo();
+            txaHistorial.Value = equipo.encuentra("all");
+        } catch(Exception h) { }
+    }
+
+    protected void btnLlenarInventario_Click(object sender, EventArgs e)
+    {
+        try {
+            InicializarInventario inventario = new InicializarInventario();
+            inventario.LlenarInventario();
+
+        } catch(Exception h) { }
     }
 }
