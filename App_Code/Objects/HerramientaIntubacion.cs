@@ -26,16 +26,12 @@ public class HerramientaIntubacion : Equipo
         {
             if (item.Id == InicializarInventario.HistorialList.Count)
             {
-                foreach (HerramientaIntubacion med in InicializarInventario.InventarioHerramientaIntubacion)
+                foreach (HerramientaIntubacion herramienta in InicializarInventario.InventarioHerramientaIntubacion)
                 {
-                    if (med.Nombre == nombreEquipo)
+                    if (herramienta.Nombre == nombreEquipo)
                     {
-                        int cantMedicamentoMax = med.Cant;
-                        med.Cant = cantidadEquipo;
-                        item.HerramientaIntubacionList.Add(med);
-
-                        if (med.Cant == cantidadEquipo)
-                        { med.Cant = cantMedicamentoMax - cantidadEquipo; }
+                        herramienta.Cant = herramienta.Cant - cantidadEquipo;
+                        item.HerramientaIntubacionList.Add(herramienta);
                     }
                 }
             }

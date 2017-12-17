@@ -26,16 +26,12 @@ public class MedicamentoAmpolla:Equipo
         {
             if (item.Id == InicializarInventario.HistorialList.Count)
             {
-                foreach (MedicamentoAmpolla med in InicializarInventario.InventarioMedicamentoAmpolla)
+                foreach (MedicamentoAmpolla medicamento in InicializarInventario.InventarioMedicamentoAmpolla)
                 {
-                    if (med.Nombre == nombreEquipo)
+                    if (medicamento.Nombre == nombreEquipo)
                     {
-                        int cantMedicamentoMax = med.Cant;
-                        med.Cant = cantidadEquipo;
-                        item.MedicamentoAmpollaList.Add(med);
-
-                        if (med.Cant == cantidadEquipo)
-                        { med.Cant = cantMedicamentoMax - cantidadEquipo; }
+                        medicamento.Cant = medicamento.Cant - cantidadEquipo;
+                        item.MedicamentoAmpollaList.Add(medicamento);
                     }
                 }
             }
