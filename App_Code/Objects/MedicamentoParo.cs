@@ -26,16 +26,12 @@ public class MedicamentoParo : Equipo
         {
             if (item.Id == InicializarInventario.HistorialList.Count)
             {
-                foreach (MedicamentoParo med in InicializarInventario.InventarioMedicamentoParo)
+                foreach (MedicamentoParo medicamento in InicializarInventario.InventarioMedicamentoParo)
                 {
-                    if (med.Nombre == nombreEquipo)
+                    if (medicamento.Nombre == nombreEquipo)
                     {
-                        int cantMedicamentoMax = med.Cant;
-                        med.Cant = cantidadEquipo;
-                        item.MedicamentoParoList.Add(med);
-
-                        if (med.Cant == cantidadEquipo)
-                        { med.Cant = cantMedicamentoMax - cantidadEquipo; }
+                        medicamento.Cant = medicamento.Cant - cantidadEquipo;
+                        item.MedicamentoParoList.Add(medicamento);
                     }
                 }
             }

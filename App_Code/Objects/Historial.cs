@@ -226,13 +226,13 @@ public class Historial
 
     public override string ToString()
     {
-        return "\n Id: "+_id + ", Fecha: "+ _fecha + ", Medico: "+_medico + ", Paramedico: " + _paramedico + ", Unidad: " + _unidad + ", Base: " + _base + ", Nombre del Paciente: " + _nombrePaciente + ", Edad: " + _edad + ", Sexo: " + _sexo 
-            + ", Cedula: " + _cedula + ", Historia Clinica: " + _historiaClinica + ", App: " + _app + ", Tratamientos: " + _tratamiento + ", Alergias: " + _alergia + ", Consciente: " + _consciente 
+        return "\n Id: "+_id + ", Fecha: "+ _fecha + ", Medico: "+_medico + ", Paramedico: " + _paramedico + ", Unidad: " + _unidad + ", Base: " + _base + "\n, Nombre del Paciente: " + _nombrePaciente + ", Edad: " + _edad + ", Sexo: " + _sexo 
+            + ", Cedula: " + _cedula + ", Historia Clinica: " + _historiaClinica + ", App: " + _app + ", Tratamientos: " + _tratamiento + ", Alergias: " + _alergia + "\n, Consciente: " + _consciente 
             + ", Orientado: " + _orientado + ", Deficit Motor: " + _DeficitMotor + ", Deficit Sensitivo: " + _DeficitSensitivo + ", Llenado Capilar < 2s"+ _llenadoCap + ", Ingurgitacion: "+ _Ingurgitacion 
             + ", Pulsos Normales: "+_pulsosNormales+", RsCsRs: "+_RsCsRs+", Faringe Normal: "+_faringeNormal+", Conductos Auditivos Normales; "+_conductosAuditNormal+", Membrana Timpanica Normal: "+ _membranaTimpNormal 
             + ", Amigdalas Normales: " + _amigdalasNormal + ", Glasgow Normal: " + _glasgowNormal + ", Glasgow Espontanea: " + _glasgowEspontanea + ", Glasgow Reactiva: " + _glasgowReactiva 
             + ", Ningun Glasgow: " + _glasgowNinguno + ", Glasgow Ocular: " + _glasgowOcular + ", Glasgow Midriasis: " +_glasgowMidriasis + ", Glasgow Dolor: " + _glasgowDolor +", Glasgow Miosis: " + _glasgowMiosis 
             + ", Glasgow Voz: " + _glasgowVoz  + ", Equipo utilizado: " + string.Join(", ", _MedicamentoAmpollaList)+ string.Join(", ", _MedicamentoSueroList) + string.Join(", ", _MedicamentoParoList) 
-            + string.Join(", ", HerramientaEstabilizadorList) + string.Join(", ", HerramientaIntubacionList) + string.Join(", ", HerramientaOxigenoList) + ", Submitted: " +_submitted;
+            + string.Join(", ", HerramientaEstabilizadorList) + string.Join(", ", HerramientaIntubacionList) + string.Join(", ", HerramientaOxigenoList) + ", Submitted: " +_submitted+"\n";
     }
 }

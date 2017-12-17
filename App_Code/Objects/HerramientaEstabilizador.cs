@@ -26,20 +26,12 @@ public class HerramientaEstabilizador : Equipo
         {
             if (item.Id == InicializarInventario.HistorialList.Count)
             {
-                foreach (HerramientaEstabilizador med in InicializarInventario.InventarioHerramientaEstabilizador)
+                foreach (HerramientaEstabilizador herramienta in InicializarInventario.InventarioHerramientaEstabilizador)
                 {
-                    if (med.Nombre == nombreEquipo)
+                    if (herramienta.Nombre == nombreEquipo)
                     {
-                        med.Cant = med.Cant - cantidadEquipo;
-                        item.HerramientaEstabilizadorList.Add(med);
-
-                        foreach(HerramientaEstabilizador herr in item.HerramientaEstabilizadorList)
-                        {
-                            if (herr == med)
-                            {
-                                herr.Cant = cantidadEquipo;
-                            }
-                        }
+                        herramienta.Cant = herramienta.Cant - cantidadEquipo;
+                        item.HerramientaEstabilizadorList.Add(herramienta);
                     }
                 }
             }

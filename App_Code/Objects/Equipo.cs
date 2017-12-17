@@ -41,7 +41,7 @@ public class Equipo
 
     public override string ToString()
     {
-        return "\n Tipo: "+_Tipo+ ", Categoria: " + _Categoria + ", Nombre: " +_Nombre+", Cantidad: "+_Cant+"";
+        return "\n Tipo: "+_Tipo+ ", Categoria: " + _Categoria + ", Nombre: " +_Nombre+", Cantidad en inventario: "+_Cant+"";
     }
 
     //Polimorfismo
