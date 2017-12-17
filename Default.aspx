@@ -303,7 +303,7 @@
 
         <div class="row">
             <div class="col-lg-6">
-                <asp:Label ID="lblTestHistorial" Text="test" style="color:red" runat="server"></asp:Label>
+                <asp:Label ID="lblTestHistorial" style="color:red" runat="server"></asp:Label>
             </div>
         </div>
   
