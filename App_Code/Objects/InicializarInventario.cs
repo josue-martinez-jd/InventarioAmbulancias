@@ -15,6 +15,7 @@ public class InicializarInventario
     public static List<MedicamentoSuero> InventarioMedicamentoSuero = new List<MedicamentoSuero>();
     public static List<MedicamentoAmpolla> InventarioMedicamentoAmpolla = new List<MedicamentoAmpolla>();
     public static List<MedicamentoParo> InventarioMedicamentoParo = new List<MedicamentoParo>();
+    public static Boolean inicializado = false;
 
     public InicializarInventario() { }
 
@@ -27,7 +28,6 @@ public class InicializarInventario
         MedicamentoSuero medicamento4 = new MedicamentoSuero("Suero Fisiologico 100ml", 1);
         MedicamentoParo medicamento5 = new MedicamentoParo("Epinefrina", 20);
         MedicamentoParo medicamento6 = new MedicamentoParo("Artropina", 10);
-
         medicamento.TipoEquipo();
         medicamento2.TipoEquipo();
         medicamento.CategoriaEquipo();
@@ -40,7 +40,6 @@ public class InicializarInventario
         medicamento6.TipoEquipo();
         medicamento5.CategoriaEquipo();
         medicamento6.CategoriaEquipo();
-
         InventarioMedicamentoAmpolla.Add(medicamento);
         InventarioMedicamentoAmpolla.Add(medicamento2);
         InventarioMedicamentoSuero.Add(medicamento3);
@@ -55,7 +54,6 @@ public class InicializarInventario
         HerramientaIntubacion herramienta4 = new HerramientaIntubacion("Mangos con bateria", 2);
         HerramientaOxigeno herramienta5 = new HerramientaOxigeno("Mangeras de alta presion", 2);
         HerramientaOxigeno herramienta6 = new HerramientaOxigeno("Mascarilla", 1);
-
         herramienta.TipoEquipo();
         herramienta2.TipoEquipo();
         herramienta.CategoriaEquipo();
@@ -68,12 +66,23 @@ public class InicializarInventario
         herramienta6.TipoEquipo();
         herramienta5.CategoriaEquipo();
         herramienta6.CategoriaEquipo();
-
         InventarioHerramientaEstabilizador.Add(herramienta);
         InventarioHerramientaEstabilizador.Add(herramienta2);
         InventarioHerramientaIntubacion.Add(herramienta3);
         InventarioHerramientaIntubacion.Add(herramienta4);
         InventarioHerramientaOxigeno.Add(herramienta5);
         InventarioHerramientaOxigeno.Add(herramienta6);
+    }
+
+    public void LlenarInventario()
+    {
+        //-----------------Se limpian las listas del inventario y se vuelven a llenar----------------
+        InventarioHerramientaEstabilizador.Clear();
+        InventarioHerramientaIntubacion.Clear();
+        InventarioHerramientaOxigeno.Clear();
+        InventarioMedicamentoSuero.Clear();
+        InventarioMedicamentoAmpolla.Clear();
+        InventarioMedicamentoParo.Clear();
+        crearInventario();
     }
 }

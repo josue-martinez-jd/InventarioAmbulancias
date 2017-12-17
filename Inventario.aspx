@@ -23,7 +23,7 @@
         <br />
         <div class="row">
              <div class="col-xs-1">
-                 <asp:Button ID="btnLlenarInventario" class="buttons" Text="Llenar Inventario" style="margin-left:0.1%" runat="server"/>
+                 <asp:Button ID="btnLlenarInventario" class="buttons" Text="Llenar Inventario" style="margin-left:0.1%" runat="server" OnClick="btnLlenarInventario_Click"/>
             </div>
         </div>
     </asp:Panel>

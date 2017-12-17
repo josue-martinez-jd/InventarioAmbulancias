@@ -226,7 +226,7 @@ public class Historial
 
     public override string ToString()
     {
-        return "Id: "+_id + ", Fecha: "+ _fecha + ", Medico: "+_medico + ", Paramedico: " + _paramedico + ", Unidad: " + _unidad + ", Base: " + _base + ", Nombre del Paciente: " + _nombrePaciente + ", Edad: " + _edad + ", Sexo: " + _sexo 
+        return "\n Id: "+_id + ", Fecha: "+ _fecha + ", Medico: "+_medico + ", Paramedico: " + _paramedico + ", Unidad: " + _unidad + ", Base: " + _base + ", Nombre del Paciente: " + _nombrePaciente + ", Edad: " + _edad + ", Sexo: " + _sexo 
             + ", Cedula: " + _cedula + ", Historia Clinica: " + _historiaClinica + ", App: " + _app + ", Tratamientos: " + _tratamiento + ", Alergias: " + _alergia + ", Consciente: " + _consciente 
             + ", Orientado: " + _orientado + ", Deficit Motor: " + _DeficitMotor + ", Deficit Sensitivo: " + _DeficitSensitivo + ", Llenado Capilar < 2s"+ _llenadoCap + ", Ingurgitacion: "+ _Ingurgitacion 
             + ", Pulsos Normales: "+_pulsosNormales+", RsCsRs: "+_RsCsRs+", Faringe Normal: "+_faringeNormal+", Conductos Auditivos Normales; "+_conductosAuditNormal+", Membrana Timpanica Normal: "+ _membranaTimpNormal 
