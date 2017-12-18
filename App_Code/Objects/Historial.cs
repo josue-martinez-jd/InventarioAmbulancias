@@ -89,27 +89,27 @@ public class Historial
     }
 
     public string Medico { get { return _medico; }
-        set { if(_submitted == false){ _medico = value; } }
+        set { if(_submitted == false && value != "") { _medico = value; } }
     }
 
     public string Fecha { get { return _fecha; }
-        set { if (_submitted == false) { _fecha = value; } }
+        set { if (_submitted == false && value != "") { _fecha = value; } }
     }
 
     public string Paramedico { get { return _paramedico; }
-        set { if (_submitted == false) { _paramedico = value; } }
+        set { if (_submitted == false && value != "") { _paramedico = value; } }
     }
 
     public string Unidad { get { return _unidad; }
-        set { if (_submitted == false) { _unidad = value; } }
+        set { if (_submitted == false && value != "") { _unidad = value; } }
     }
 
     public string Base { get { return _base; }
-        set { if (_submitted == false) { _base = value; } }
+        set { if (_submitted == false && value != "") { _base = value; } }
     }
 
     public string NombrePaciente { get { return _nombrePaciente; }
-        set { if (_submitted == false) { _nombrePaciente = value; } }
+        set { if (_submitted == false && value != "") { _nombrePaciente = value; } }
     }
 
     public int Edad { get { return _edad; }
@@ -117,7 +117,7 @@ public class Historial
     }
 
     public string Sexo { get { return _sexo; }
-        set { if (_submitted == false) { _sexo = value; } }
+        set { if (_submitted == false && value != "") { _sexo = value; } }
     }
 
     public int Cedula { get { return _cedula; }
@@ -125,7 +125,7 @@ public class Historial
     }
 
     public string HistoriaClinica { get { return _historiaClinica; }
-        set { if (_submitted == false) { _historiaClinica = value; } }
+        set { if (_submitted == false && value !="") { _historiaClinica = value; } }
     }
 
     public string App { get { return _app; }
